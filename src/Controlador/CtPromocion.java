@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.ClsPromocion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -97,8 +98,8 @@ public class CtPromocion {
         }
         return promocion;
     }
-    
-     public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, String idPromocion) {
+
+    public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, String idPromocion) {
         for (int i = 0; i < listaPromocion.size(); i++) {
             if (idPromocion.equalsIgnoreCase(listaPromocion.get(i).getIdPromocion())) {
                 listaPromocion.remove(i);
@@ -110,4 +111,30 @@ public class CtPromocion {
         return listaPromocion;
     }
 
+    public ArrayList<ClsPromocion> modificarPromocion(ArrayList<ClsPromocion> listaPromocion, String nombrePromocion, String fecha, String idPromocion, double equipaje, double millas, double valorPromocion) {
+        for (int i = 0; i < listaPromocion.size(); i++) {
+            if (idPromocion.equalsIgnoreCase(listaPromocion.get(i).getIdPromocion())) {
+                listaPromocion.get(i).setNombrePromocion(nombrePromocion);
+                listaPromocion.get(i).setFecha(fecha);
+                listaPromocion.get(i).setEquipaje(equipaje);
+                listaPromocion.get(i).setMillas(millas);
+                JOptionPane.showMessageDialog(null, "Promocion modificada");
+            } else {
+                JOptionPane.showMessageDialog(null, "no se encontro ninguna promocion con ese id");
+            }
+        }
+        return listaPromocion;
+
+    }
+    public DefaultTableModel listarElementos(ArrayList<ClsPromocion>listaPromocion) {
+        DefaultTableModel modelo;
+        String nombreColumnas[] = {"Fecha", "idPromocion", "Nombre promocion", "Equipaje", "Millas", "Valor Promocion"};
+        modelo = new DefaultTableModel(new Object[][]{}, nombreColumnas);
+
+        for (int i = 0; i < listaPromocion.size(); i++) {
+            modelo.addRow(new Object[]{listaPromocion.get(i).getFecha(), listaPromocion.get(i).getIdPromocion(), listaPromocion.get(i).getNombrePromocion(), listaPromocion.get(i).getEquipaje(), listaPromocion.get(i).getMillas(), listaPromocion.get(i).getValorPromocion()});
+        }
+
+        return modelo;
+    }
 }
