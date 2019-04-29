@@ -12,13 +12,15 @@ package Modelo;
 public class ClsPromocion {
 String fecha;
 String idPromocion;
+String nombrePromocion;
 double millas;
 double equipaje;
 double valorPromocion;
 
-    public ClsPromocion(String fecha, String idPromocion, double millas, double equipaje, double valorPromocion) {
+    public ClsPromocion(String fecha, String idPromocion, String nombrePromocion, double millas, double equipaje, double valorPromocion) {
         this.fecha = fecha;
         this.idPromocion = idPromocion;
+        this.nombrePromocion = nombrePromocion;
         this.millas = millas;
         this.equipaje = equipaje;
         this.valorPromocion = valorPromocion;
@@ -38,6 +40,14 @@ double valorPromocion;
 
     public void setIdPromocion(String idPromocion) {
         this.idPromocion = idPromocion;
+    }
+
+    public String getNombrePromocion() {
+        return nombrePromocion;
+    }
+
+    public void setNombrePromocion(String nombrePromocion) {
+        this.nombrePromocion = nombrePromocion;
     }
 
     public double getMillas() {
@@ -63,6 +73,7 @@ double valorPromocion;
     public void setValorPromocion(double valorPromocion) {
         this.valorPromocion = valorPromocion;
     }
+
 
 
 }
