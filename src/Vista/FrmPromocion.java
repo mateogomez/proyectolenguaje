@@ -31,6 +31,12 @@ public class FrmPromocion extends javax.swing.JFrame {
         lblFecha = new javax.swing.JLabel();
         lblIdpromocion = new javax.swing.JLabel();
         txtIdpromocion = new javax.swing.JTextField();
+        lblMillas = new javax.swing.JLabel();
+        txtMillas = new javax.swing.JTextField();
+        lblEquipaje = new javax.swing.JLabel();
+        txtEquipaje = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtValorpromocion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,12 +46,24 @@ public class FrmPromocion extends javax.swing.JFrame {
 
         lblIdpromocion.setText("Id promocion");
 
+        lblMillas.setText("Millas");
+
+        lblEquipaje.setText("Equipaje");
+
+        txtEquipaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEquipajeActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Valor promocion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(lblPromocion))
@@ -54,10 +72,21 @@ public class FrmPromocion extends javax.swing.JFrame {
                         .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblIdpromocion)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIdpromocion)
+                            .addComponent(lblMillas)
+                            .addComponent(lblEquipaje))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdpromocion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdpromocion)
+                            .addComponent(txtMillas)
+                            .addComponent(txtEquipaje, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtValorpromocion, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,11 +99,27 @@ public class FrmPromocion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdpromocion)
                     .addComponent(txtIdpromocion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMillas)
+                    .addComponent(txtMillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEquipaje)
+                    .addComponent(txtEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtValorpromocion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEquipajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEquipajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEquipajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,9 +157,15 @@ public class FrmPromocion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblEquipaje;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblIdpromocion;
+    private javax.swing.JLabel lblMillas;
     private javax.swing.JLabel lblPromocion;
+    private javax.swing.JTextField txtEquipaje;
     private javax.swing.JTextField txtIdpromocion;
+    private javax.swing.JTextField txtMillas;
+    private javax.swing.JTextField txtValorpromocion;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                       <Component id="lblPromocion" min="-2" max="-2" attributes="0"/>
@@ -35,12 +35,26 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblIdpromocion" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblIdpromocion" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMillas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEquipaje" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtIdpromocion" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtIdpromocion" max="32767" attributes="0"/>
+                          <Component id="txtMillas" max="32767" attributes="0"/>
+                          <Component id="txtEquipaje" alignment="0" pref="151" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtValorpromocion" pref="133" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="173" max="32767" attributes="0"/>
+              <EmptySpace pref="158" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,7 +70,22 @@
                   <Component id="lblIdpromocion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtIdpromocion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="205" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblMillas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMillas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEquipaje" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEquipaje" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorpromocion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,6 +107,30 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdpromocion">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMillas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Millas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMillas">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEquipaje">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Equipaje"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEquipaje">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEquipajeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor promocion"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtValorpromocion">
     </Component>
   </SubComponents>
 </Form>
