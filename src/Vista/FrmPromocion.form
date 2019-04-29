@@ -32,7 +32,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblFecha" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="txtValorpromocion" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -40,19 +42,15 @@
                               <Component id="lblIdpromocion" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblMillas" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblEquipaje" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFecha" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtIdpromocion" max="32767" attributes="0"/>
                               <Component id="txtMillas" max="32767" attributes="0"/>
-                              <Component id="txtEquipaje" alignment="0" pref="151" max="32767" attributes="0"/>
+                              <Component id="txtEquipaje" alignment="0" max="32767" attributes="0"/>
+                              <Component id="JdateFecha" pref="151" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtValorpromocion" pref="133" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -78,7 +76,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblPromocion" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
+                  <Component id="JdateFecha" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblIdpromocion" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -109,7 +110,7 @@
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -175,6 +176,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="JdateFecha">
     </Component>
   </SubComponents>
 </Form>
