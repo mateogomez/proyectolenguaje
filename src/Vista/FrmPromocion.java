@@ -13,20 +13,28 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author mateo
  */
 public class FrmPromocion extends javax.swing.JFrame {
-    
+//falta corregir registrar
     DateFormat formato = DateFormat.getDateInstance();
     ArrayList<ClsPromocion> listapromocion = new ArrayList<ClsPromocion>();
     CtPromocion controladorPromocion;
-    
+
     public FrmPromocion() {
         initComponents();
         controladorPromocion = new CtPromocion();
+        
+        try{
+            listapromocion=controladorPromocion.cargarArchivo(listapromocion);
+            listar();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -85,6 +93,7 @@ public class FrmPromocion extends javax.swing.JFrame {
         });
 
         BtnRegistrar.setText("Registrar");
+        BtnRegistrar.setEnabled(false);
         BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistrarActionPerformed(evt);
@@ -100,8 +109,18 @@ public class FrmPromocion extends javax.swing.JFrame {
 
         BtnModificar.setText("Modificar");
         BtnModificar.setEnabled(false);
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
 
         BtnEliminar.setText("Eliminar");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
 
         JdateFecha.setEnabled(false);
 
@@ -259,17 +278,25 @@ public class FrmPromocion extends javax.swing.JFrame {
         txtMillas.setEnabled(true);
         txtEquipaje.setEnabled(true);
         txtValorpromocion.setEnabled(true);
-        ClsPromocion promocion=null;
-        promocion=controladorPromocion.buscarPromocion(listapromocion, idPromocion);
-        if(promocion==null){
-            
-        }else {
-           
+        ClsPromocion promocion = null;
+        promocion = controladorPromocion.buscarPromocion(listapromocion, idPromocion);
+        if (promocion == null) {
+            limpiar();
+        } else {
+            Date fecha = convertirString(promocion.getFecha());
+            JdateFecha.setDate(fecha);
+            txtIdpromocion.setText(promocion.getIdPromocion());
+            txtNombrepromocion.setText(promocion.getNombrePromocion());
+            txtMillas.setText(promocion.getMillas() + "");
+            txtEquipaje.setText(promocion.getEquipaje() + "");
+            txtValorpromocion.setText(promocion.getValorPromocion() + "");
+
         }
-        
+
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
     private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        BtnRegistrar.setEnabled(true);
         JdateFecha.setEnabled(true);
         txtIdpromocion.setEnabled(true);
         txtNombrepromocion.setEnabled(true);
@@ -285,8 +312,9 @@ public class FrmPromocion extends javax.swing.JFrame {
         double millas = Double.parseDouble(txtMillas.getText());
         double equipaje = Double.parseDouble(txtEquipaje.getText());
         double valorPromocion = Double.parseDouble(txtValorpromocion.getText());
-        
+
         listapromocion = controladorPromocion.registrarPromocion(listapromocion, fecha, nombrePromocion, idPromocion, equipaje, millas, valorPromocion);
+        String res = controladorPromocion.guardarArchivo(listapromocion);
         listar();
         limpiar();
     }//GEN-LAST:event_BtnRegistrarActionPerformed
@@ -294,10 +322,33 @@ public class FrmPromocion extends javax.swing.JFrame {
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        String fecha = formato.format(JdateFecha.getDate());
+        String idPromocion = txtIdpromocion.getText();
+        String nombrePromocion = txtNombrepromocion.getText();
+        double millas = Double.parseDouble(txtMillas.getText());
+        double equipaje = Double.parseDouble(txtEquipaje.getText());
+        double valorPromocion = Double.parseDouble(txtValorpromocion.getText());
+        listapromocion = controladorPromocion.modificarPromocion(listapromocion, nombrePromocion, fecha, idPromocion, equipaje, millas, valorPromocion);
+        String res = controladorPromocion.guardarArchivo(listapromocion);
+        BtnModificar.setEnabled(false);
+        limpiar();
+        listar();
+    }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        String idPromocion = JOptionPane.showInputDialog("ingrese el id de la promocion que desea eliminar");
+        listapromocion = controladorPromocion.eliminarPromocion(listapromocion, idPromocion);
+        String res = controladorPromocion.guardarArchivo(listapromocion);
+        listar();
+    }//GEN-LAST:event_BtnEliminarActionPerformed
     public void listar() {
-        JtablePromocion.setModel(controladorPromocion.listarElementos(listapromocion));
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = controladorPromocion.listarElementos(listapromocion);
+        JtablePromocion.setModel(modelo);
     }
-    
+
     public void limpiar() {
         Date vacio = null;
         JdateFecha.setDate(vacio);
@@ -313,9 +364,10 @@ public class FrmPromocion extends javax.swing.JFrame {
         txtEquipaje.setEnabled(false);
         txtValorpromocion.setText("");
         txtValorpromocion.setEnabled(false);
-        
+
     }
-public Date convertirString(String fecha) {
+
+    public Date convertirString(String fecha) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         try {
@@ -325,6 +377,7 @@ public Date convertirString(String fecha) {
         }
         return fechaDate;
     }
+
     /**
      * @param args the command line arguments
      */

@@ -6,6 +6,10 @@
 package Controlador;
 
 import Modelo.ClsPromocion;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +41,7 @@ public class CtPromocion {
                 }
             } else {
                 for (int i = 0; i < listaPromociones.size(); i++) {
+
                     if (idPromocion.equalsIgnoreCase(listaPromociones.get(i).getIdPromocion())) {
                         JOptionPane.showMessageDialog(null, "Promocion ya existente");
                         break;
@@ -55,6 +60,9 @@ public class CtPromocion {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromociones.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
+                        }
+                        if (equipaje > 32) {
+                            JOptionPane.showMessageDialog(null, "se excede del peso del equipaje");
                         }
                     }
                 }
@@ -112,6 +120,7 @@ public class CtPromocion {
                     listaPromocion.get(i).setFecha(fecha);
                     listaPromocion.get(i).setEquipaje(equipaje);
                     listaPromocion.get(i).setMillas(millas);
+                    listaPromocion.get(i).setValorPromocion(valorPromocion);
                     JOptionPane.showMessageDialog(null, "Promocion modificada");
                 } else {
                     JOptionPane.showMessageDialog(null, "no se encontro ninguna promocion con ese id");
@@ -136,5 +145,57 @@ public class CtPromocion {
             System.out.println(e.toString());
         }
         return modelo;
+    }
+
+    public String guardarArchivo(ArrayList<ClsPromocion> listapromocion) {
+        FileOutputStream archivo = null; //reservar en memoria un espacio para la creacion del archivo
+
+        try {
+            archivo = new FileOutputStream("Promocion.dat");
+        } catch (Exception e) {
+            return "Error creando el archivo";
+        }
+
+        ObjectOutputStream escrituraArchivo = null; //creamos un objeto para la escritura en el archivo
+
+        try {
+            escrituraArchivo = new ObjectOutputStream(archivo);// se asigna al archivo anteriormente cargado
+        } catch (Exception e) {
+            return "Error con el archivo";
+        }
+
+        try {
+            escrituraArchivo.writeObject(listapromocion);// ingresar el listado al archivo creado
+            return "Se guardo correctamente";
+        } catch (Exception e) {
+            return "Error almacenando la informacion";
+        }
+
+    }
+
+    public ArrayList<ClsPromocion> cargarArchivo(ArrayList<ClsPromocion> listapromocion) {
+        FileInputStream archivo = null; // se reserva el espacio en memoria para el archivo que se va a cargar
+
+        try {
+            archivo = new FileInputStream("Promocion.dat");//se lee el archivo creado en el guardar
+        } catch (Exception e) {
+            // return "Error cargando el archivo";
+        }
+
+        ObjectInputStream lecturaArchivo = null;// definimos un objeto para la lectura del archivo
+
+        try {
+            lecturaArchivo = new ObjectInputStream(archivo); // se lo asignamos al archivo leido anteiormente
+        } catch (Exception e) {
+            //  return "Error con el archivo";
+        }
+
+        try {
+            listapromocion = (ArrayList<ClsPromocion>) lecturaArchivo.readObject();// se saca la informacion del archivo cargado
+        } catch (Exception e) {
+            //return "Error cargando la informacion";
+        }
+        return listapromocion;
+        // return "Archivo cargado correctamente";
     }
 }

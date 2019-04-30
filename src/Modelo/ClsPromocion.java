@@ -5,17 +5,20 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mateo
  */
-public class ClsPromocion {
-String fecha;
-String idPromocion;
-String nombrePromocion;
-double millas;
-double equipaje;
-double valorPromocion;
+public class ClsPromocion implements Serializable {
+
+    String fecha;
+    String idPromocion;
+    String nombrePromocion;
+    double millas;
+    double equipaje;
+    double valorPromocion;
 
     public ClsPromocion(String fecha, String idPromocion, String nombrePromocion, double millas, double equipaje, double valorPromocion) {
         this.fecha = fecha;
@@ -73,7 +76,5 @@ double valorPromocion;
     public void setValorPromocion(double valorPromocion) {
         this.valorPromocion = valorPromocion;
     }
-
-
 
 }
