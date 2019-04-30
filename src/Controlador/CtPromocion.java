@@ -42,7 +42,7 @@ public class CtPromocion {
             } else {
                 for (int i = 0; i < listaPromocion.size(); i++) {
 
-                    if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
+                    if (idPromocion == (listaPromocion.get(i).getIdPromocion())) {
                         JOptionPane.showMessageDialog(null, "Promocion ya existente");
                         break;
                     } else {
@@ -50,19 +50,23 @@ public class CtPromocion {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
+                            break;
                         }
                         if (equipaje > 10 && equipaje <= 25) {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
+                            break;
                         }
                         if (equipaje > 25 && equipaje <= 32) {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
+                            break;
                         }
                         if (equipaje > 32) {
                             JOptionPane.showMessageDialog(null, "se excede del peso del equipaje");
+                            break;
                         }
                     }
                 }
@@ -76,11 +80,10 @@ public class CtPromocion {
 
     public ClsPromocion buscarPromocion(ArrayList<ClsPromocion> listaPromocion, int idPromocion) {
         ClsPromocion promocion = null;
+        int encontrado = 0;
         try {
-
-            int encontrado = 0;
             for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
+                if (idPromocion == (listaPromocion.get(i).getIdPromocion())) {
                     promocion = listaPromocion.get(i);
                     encontrado++;
                     break;
@@ -97,38 +100,41 @@ public class CtPromocion {
     }
 
     public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, int idPromocion) {
-        try {
-            for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
-                    listaPromocion.remove(i);
-                    JOptionPane.showMessageDialog(null, "Promocion eliminada");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontro ningúna promocion ese id");
-                }
+        int encontrado = 0;
+        for (int i = 0; i < listaPromocion.size(); i++) {
+            if (idPromocion == (listaPromocion.get(i).getIdPromocion())) {
+                listaPromocion.remove(i);
+                JOptionPane.showMessageDialog(null, "Promocion eliminada");
+                encontrado++;
+                break;
+
             }
-        } catch (Exception e) {
-            System.out.println(e.toString());
         }
+        if (encontrado == 0) {
+            JOptionPane.showMessageDialog(null, "No se encontro ningúna promocion con ese id");
+        }
+
         return listaPromocion;
     }
 
     public ArrayList<ClsPromocion> modificarPromocion(ArrayList<ClsPromocion> listaPromocion, String nombrePromocion, String fecha, int idPromocion, double equipaje, double millas, double valorPromocion) {
-        try {
-            for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
-                    listaPromocion.get(i).setNombrePromocion(nombrePromocion);
-                    listaPromocion.get(i).setFecha(fecha);
-                    listaPromocion.get(i).setEquipaje(equipaje);
-                    listaPromocion.get(i).setMillas(millas);
-                    listaPromocion.get(i).setValorPromocion(valorPromocion);
-                    JOptionPane.showMessageDialog(null, "Promocion modificada");
-                } else {
-                    JOptionPane.showMessageDialog(null, "no se encontro ninguna promocion con ese id");
-                }
+        int encontrado = 0;
+        for (int i = 0; i < listaPromocion.size(); i++) {
+            if (idPromocion == listaPromocion.get(i).getIdPromocion()) {
+                listaPromocion.get(i).setNombrePromocion(nombrePromocion);
+                listaPromocion.get(i).setFecha(fecha);
+                listaPromocion.get(i).setEquipaje(equipaje);
+                listaPromocion.get(i).setMillas(millas);
+                listaPromocion.get(i).setValorPromocion(valorPromocion);
+                JOptionPane.showMessageDialog(null, "Promocion modificada");
+                encontrado++;
+                break;
             }
-        } catch (Exception e) {
-            System.out.println(e.toString());
         }
+        if (encontrado == 0) {
+            JOptionPane.showMessageDialog(null, "No se encontro ningúna promocion con ese id");
+        }
+
         return listaPromocion;
 
     }
