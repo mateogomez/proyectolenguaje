@@ -20,45 +20,45 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CtPromocion {
 
-    public ArrayList<ClsPromocion> registrarPromocion(ArrayList<ClsPromocion> listaPromociones, String fecha, String nombrePromocion, String idPromocion, double equipaje, double millas, double valorPromocion) {
+    public ArrayList<ClsPromocion> registrarPromocion(ArrayList<ClsPromocion> listaPromocion, String fecha, String nombrePromocion, int idPromocion, double equipaje, double millas, double valorPromocion) {
         try {
-            if (listaPromociones.isEmpty()) {
+            if (listaPromocion.isEmpty()) {
                 if (equipaje <= 10) {
 
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                    listaPromociones.add(promocion);
+                    listaPromocion.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
                 }
                 if (equipaje > 10 && equipaje <= 25) {
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                    listaPromociones.add(promocion);
+                    listaPromocion.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
                 }
                 if (equipaje > 25 && equipaje <= 32) {
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                    listaPromociones.add(promocion);
+                    listaPromocion.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
                 }
             } else {
-                for (int i = 0; i < listaPromociones.size(); i++) {
+                for (int i = 0; i < listaPromocion.size(); i++) {
 
-                    if (idPromocion.equalsIgnoreCase(listaPromociones.get(i).getIdPromocion())) {
+                    if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
                         JOptionPane.showMessageDialog(null, "Promocion ya existente");
                         break;
                     } else {
                         if (equipaje <= 10) {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                            listaPromociones.add(promocion);
+                            listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
                         }
                         if (equipaje > 10 && equipaje <= 25) {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                            listaPromociones.add(promocion);
+                            listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
                         }
                         if (equipaje > 25 && equipaje <= 32) {
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
-                            listaPromociones.add(promocion);
+                            listaPromocion.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
                         }
                         if (equipaje > 32) {
@@ -71,16 +71,16 @@ public class CtPromocion {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        return listaPromociones;
+        return listaPromocion;
     }
 
-    public ClsPromocion buscarPromocion(ArrayList<ClsPromocion> listaPromocion, String idPromocion) {
+    public ClsPromocion buscarPromocion(ArrayList<ClsPromocion> listaPromocion, int idPromocion) {
         ClsPromocion promocion = null;
         try {
 
             int encontrado = 0;
             for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion.equalsIgnoreCase(listaPromocion.get(i).getIdPromocion())) {
+                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
                     promocion = listaPromocion.get(i);
                     encontrado++;
                     break;
@@ -96,10 +96,10 @@ public class CtPromocion {
         return promocion;
     }
 
-    public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, String idPromocion) {
+    public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, int idPromocion) {
         try {
             for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion.equalsIgnoreCase(listaPromocion.get(i).getIdPromocion())) {
+                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
                     listaPromocion.remove(i);
                     JOptionPane.showMessageDialog(null, "Promocion eliminada");
                 } else {
@@ -112,10 +112,10 @@ public class CtPromocion {
         return listaPromocion;
     }
 
-    public ArrayList<ClsPromocion> modificarPromocion(ArrayList<ClsPromocion> listaPromocion, String nombrePromocion, String fecha, String idPromocion, double equipaje, double millas, double valorPromocion) {
+    public ArrayList<ClsPromocion> modificarPromocion(ArrayList<ClsPromocion> listaPromocion, String nombrePromocion, String fecha, int idPromocion, double equipaje, double millas, double valorPromocion) {
         try {
             for (int i = 0; i < listaPromocion.size(); i++) {
-                if (idPromocion.equalsIgnoreCase(listaPromocion.get(i).getIdPromocion())) {
+                if (idPromocion==(listaPromocion.get(i).getIdPromocion())) {
                     listaPromocion.get(i).setNombrePromocion(nombrePromocion);
                     listaPromocion.get(i).setFecha(fecha);
                     listaPromocion.get(i).setEquipaje(equipaje);

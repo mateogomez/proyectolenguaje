@@ -14,13 +14,13 @@ import java.io.Serializable;
 public class ClsPromocion implements Serializable {
 
     String fecha;
-    String idPromocion;
+    int idPromocion;
     String nombrePromocion;
     double millas;
     double equipaje;
     double valorPromocion;
 
-    public ClsPromocion(String fecha, String idPromocion, String nombrePromocion, double millas, double equipaje, double valorPromocion) {
+    public ClsPromocion(String fecha, int idPromocion, String nombrePromocion, double millas, double equipaje, double valorPromocion) {
         this.fecha = fecha;
         this.idPromocion = idPromocion;
         this.nombrePromocion = nombrePromocion;
@@ -37,11 +37,11 @@ public class ClsPromocion implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getIdPromocion() {
+    public int getIdPromocion() {
         return idPromocion;
     }
 
-    public void setIdPromocion(String idPromocion) {
+    public void setIdPromocion(int idPromocion) {
         this.idPromocion = idPromocion;
     }
 
@@ -77,4 +77,5 @@ public class ClsPromocion implements Serializable {
         this.valorPromocion = valorPromocion;
     }
 
+  
 }

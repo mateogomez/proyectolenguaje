@@ -270,7 +270,7 @@ public class FrmPromocion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEquipajeActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        String idPromocion = JOptionPane.showInputDialog("ingrese el id de la promocion");
+        int idPromocion = Integer.parseInt(JOptionPane.showInputDialog("ingrese el id de la promocion"));
         BtnModificar.setEnabled(true);
         JdateFecha.setEnabled(true);
         txtIdpromocion.setEnabled(true);
@@ -285,7 +285,7 @@ public class FrmPromocion extends javax.swing.JFrame {
         } else {
             Date fecha = convertirString(promocion.getFecha());
             JdateFecha.setDate(fecha);
-            txtIdpromocion.setText(promocion.getIdPromocion());
+            txtIdpromocion.setText(promocion.getIdPromocion()+"");
             txtNombrepromocion.setText(promocion.getNombrePromocion());
             txtMillas.setText(promocion.getMillas() + "");
             txtEquipaje.setText(promocion.getEquipaje() + "");
@@ -307,7 +307,7 @@ public class FrmPromocion extends javax.swing.JFrame {
 
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
         String fecha = formato.format(JdateFecha.getDate());
-        String idPromocion = txtIdpromocion.getText();
+        int idPromocion = Integer.parseInt(txtIdpromocion.getText());
         String nombrePromocion = txtNombrepromocion.getText();
         double millas = Double.parseDouble(txtMillas.getText());
         double equipaje = Double.parseDouble(txtEquipaje.getText());
@@ -325,7 +325,7 @@ public class FrmPromocion extends javax.swing.JFrame {
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         String fecha = formato.format(JdateFecha.getDate());
-        String idPromocion = txtIdpromocion.getText();
+        int idPromocion = Integer.parseInt(txtIdpromocion.getText());
         String nombrePromocion = txtNombrepromocion.getText();
         double millas = Double.parseDouble(txtMillas.getText());
         double equipaje = Double.parseDouble(txtEquipaje.getText());
@@ -338,7 +338,7 @@ public class FrmPromocion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        String idPromocion = JOptionPane.showInputDialog("ingrese el id de la promocion que desea eliminar");
+        int idPromocion = Integer.parseInt(JOptionPane.showInputDialog("ingrese el id de la promocion que desea eliminar"));
         listapromocion = controladorPromocion.eliminarPromocion(listapromocion, idPromocion);
         String res = controladorPromocion.guardarArchivo(listapromocion);
         listar();
