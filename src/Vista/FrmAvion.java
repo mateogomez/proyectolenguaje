@@ -187,14 +187,14 @@ public class FrmAvion extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
        
-        txtSerialAvion.setVisible(true);
-        txtCapacidad.setVisible(true);
-        txtCodigoPiloto.setVisible(true);
-        txtNombrePiloto.setVisible(true);
-        txtCodigoAzafata.setVisible(true);
-        txtNombreAzafata.setVisible(true);
-        btnGuardar.setVisible(true);
-        btnModificar.setVisible(true);
+        txtSerialAvion.setEnabled(true);
+        txtCapacidad.setEnabled(true);
+        txtCodigoPiloto.setEnabled(true);
+        txtNombrePiloto.setEnabled(true);
+        txtCodigoAzafata.setEnabled(true);
+        txtNombreAzafata.setEnabled(true);
+        btnGuardar.setEnabled(true);
+        btnModificar.setEnabled(true);
         limpiar();
   
         

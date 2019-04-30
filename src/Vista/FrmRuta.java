@@ -151,11 +151,11 @@ public class FrmRuta extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         
-        txtDestino.setVisible(true);
-        txtOrigen.setVisible(true);
-        txtRuta.setVisible(true);
-        btnRegistrar.setVisible(true);
-        btnEliminar.setVisible(true);
+        txtDestino.setEnabled(true);
+        txtOrigen.setEnabled(true);
+        txtRuta.setEnabled(true);
+        btnRegistrar.setEnabled(true);
+        btnEliminar.setEnabled(true);
         
         
         
