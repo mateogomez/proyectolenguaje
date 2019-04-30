@@ -5,18 +5,28 @@
  */
 package Vista;
 
+import Controlador.CtPromocion;
 import Modelo.ClsPromocion;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mateo
  */
 public class FrmPromocion extends javax.swing.JFrame {
-
-   ArrayList<ClsPromocion>listapromocion=new ArrayList<ClsPromocion>();
+    
+    DateFormat formato = DateFormat.getDateInstance();
+    ArrayList<ClsPromocion> listapromocion = new ArrayList<ClsPromocion>();
+    CtPromocion controladorPromocion;
+    
     public FrmPromocion() {
         initComponents();
+        controladorPromocion = new CtPromocion();
     }
 
     /**
@@ -44,6 +54,12 @@ public class FrmPromocion extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JtablePromocion = new javax.swing.JTable();
         BtnRegresar = new javax.swing.JButton();
+        lblNombrepromocion = new javax.swing.JLabel();
+        txtNombrepromocion = new javax.swing.JTextField();
+        lblValorpromocion = new javax.swing.JLabel();
+        txtValorpromocion = new javax.swing.JTextField();
+        BtnLimpiar = new javax.swing.JButton();
+        BtnNuevo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +85,11 @@ public class FrmPromocion extends javax.swing.JFrame {
         });
 
         BtnRegistrar.setText("Registrar");
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
 
         BtnBuscar.setText("Buscar");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +120,28 @@ public class FrmPromocion extends javax.swing.JFrame {
 
         BtnRegresar.setText("Regresar");
 
+        lblNombrepromocion.setText("Nombre promocion");
+
+        txtNombrepromocion.setEnabled(false);
+
+        lblValorpromocion.setText("Valor de promocion");
+
+        txtValorpromocion.setEnabled(false);
+
+        BtnLimpiar.setText("Limpiar");
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
+
+        BtnNuevo.setText("Nuevo");
+        BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,10 +154,14 @@ public class FrmPromocion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnNuevo)
+                        .addGap(30, 30, 30)
+                        .addComponent(BtnLimpiar)
+                        .addGap(26, 26, 26)
                         .addComponent(BtnRegresar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblIdpromocion)
@@ -123,21 +170,27 @@ public class FrmPromocion extends javax.swing.JFrame {
                                     .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtIdpromocion)
                                     .addComponent(txtMillas)
                                     .addComponent(txtEquipaje)
-                                    .addComponent(JdateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                                    .addComponent(JdateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(txtIdpromocion)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BtnRegistrar)
-                                    .addComponent(BtnModificar))
+                                .addComponent(BtnModificar)
                                 .addGap(53, 53, 53)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BtnEliminar)
-                                    .addComponent(BtnBuscar))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(BtnBuscar)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblValorpromocion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtValorpromocion))
+                            .addComponent(BtnRegistrar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNombrepromocion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombrepromocion)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,38 +198,49 @@ public class FrmPromocion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPromocion)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnRegresar)
+                            .addComponent(BtnLimpiar)
+                            .addComponent(BtnNuevo))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFecha)
                             .addComponent(JdateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblIdpromocion)
                             .addComponent(txtIdpromocion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombrepromocion)
+                            .addComponent(txtNombrepromocion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMillas)
                             .addComponent(txtMillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEquipaje)
                             .addComponent(txtEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(66, 66, 66)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblValorpromocion)
+                            .addComponent(txtValorpromocion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnRegistrar)
                             .addComponent(BtnBuscar))
-                        .addGap(27, 27, 27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnModificar)
-                            .addComponent(BtnEliminar)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(BtnEliminar))
+                        .addGap(25, 25, 25))))
         );
 
         pack();
@@ -187,9 +251,80 @@ public class FrmPromocion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEquipajeActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-       BtnModificar.setEnabled(true);
+        String idPromocion = JOptionPane.showInputDialog("ingrese el id de la promocion");
+        BtnModificar.setEnabled(true);
+        JdateFecha.setEnabled(true);
+        txtIdpromocion.setEnabled(true);
+        txtNombrepromocion.setEnabled(true);
+        txtMillas.setEnabled(true);
+        txtEquipaje.setEnabled(true);
+        txtValorpromocion.setEnabled(true);
+        ClsPromocion promocion=null;
+        promocion=controladorPromocion.buscarPromocion(listapromocion, idPromocion);
+        if(promocion==null){
+            
+        }else {
+           
+        }
+        
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
+    private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        JdateFecha.setEnabled(true);
+        txtIdpromocion.setEnabled(true);
+        txtNombrepromocion.setEnabled(true);
+        txtMillas.setEnabled(true);
+        txtEquipaje.setEnabled(true);
+        txtValorpromocion.setEnabled(true);
+    }//GEN-LAST:event_BtnNuevoActionPerformed
+
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+        String fecha = formato.format(JdateFecha.getDate());
+        String idPromocion = txtIdpromocion.getText();
+        String nombrePromocion = txtNombrepromocion.getText();
+        double millas = Double.parseDouble(txtMillas.getText());
+        double equipaje = Double.parseDouble(txtEquipaje.getText());
+        double valorPromocion = Double.parseDouble(txtValorpromocion.getText());
+        
+        listapromocion = controladorPromocion.registrarPromocion(listapromocion, fecha, nombrePromocion, idPromocion, equipaje, millas, valorPromocion);
+        listar();
+        limpiar();
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
+    public void listar() {
+        JtablePromocion.setModel(controladorPromocion.listarElementos(listapromocion));
+    }
+    
+    public void limpiar() {
+        Date vacio = null;
+        JdateFecha.setDate(vacio);
+        JdateFecha.setCalendar(null);
+        JdateFecha.setEnabled(false);
+        txtNombrepromocion.setText("");
+        txtNombrepromocion.setEnabled(false);
+        txtIdpromocion.setText("");
+        txtIdpromocion.setEnabled(false);
+        txtMillas.setText("");
+        txtMillas.setEnabled(false);
+        txtEquipaje.setText("");
+        txtEquipaje.setEnabled(false);
+        txtValorpromocion.setText("");
+        txtValorpromocion.setEnabled(false);
+        
+    }
+public Date convertirString(String fecha) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = format.parse(fecha);
+        } catch (ParseException ex) {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
     /**
      * @param args the command line arguments
      */
@@ -228,7 +363,9 @@ public class FrmPromocion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton BtnEliminar;
+    private javax.swing.JButton BtnLimpiar;
     private javax.swing.JButton BtnModificar;
+    private javax.swing.JButton BtnNuevo;
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar;
     private com.toedter.calendar.JDateChooser JdateFecha;
@@ -238,9 +375,13 @@ public class FrmPromocion extends javax.swing.JFrame {
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblIdpromocion;
     private javax.swing.JLabel lblMillas;
+    private javax.swing.JLabel lblNombrepromocion;
     private javax.swing.JLabel lblPromocion;
+    private javax.swing.JLabel lblValorpromocion;
     private javax.swing.JTextField txtEquipaje;
     private javax.swing.JTextField txtIdpromocion;
     private javax.swing.JTextField txtMillas;
+    private javax.swing.JTextField txtNombrepromocion;
+    private javax.swing.JTextField txtValorpromocion;
     // End of variables declaration//GEN-END:variables
 }

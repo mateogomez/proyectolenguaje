@@ -16,29 +16,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CtPromocion {
 
-    public ArrayList<ClsPromocion> registrarPromocion(ArrayList<ClsPromocion> listaPromociones, String nombrePromocion, String fecha, String idPromocion, double equipaje, double millas, double valorPromocion) {
+    public ArrayList<ClsPromocion> registrarPromocion(ArrayList<ClsPromocion> listaPromociones, String fecha, String nombrePromocion, String idPromocion, double equipaje, double millas, double valorPromocion) {
         try {
             if (listaPromociones.isEmpty()) {
                 if (equipaje <= 10) {
-                    valorPromocion = 125000;
-                    nombrePromocion = "Viva";
-                    millas = 100;
+
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                     listaPromociones.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
                 }
                 if (equipaje > 10 && equipaje <= 25) {
-                    valorPromocion = 193000;
-                    nombrePromocion = "VivaSuper";
-                    millas = 110;
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                     listaPromociones.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
                 }
                 if (equipaje > 25 && equipaje <= 32) {
-                    valorPromocion = 296500;
-                    nombrePromocion = "VivaMax";
-                    millas = 120;
                     ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                     listaPromociones.add(promocion);
                     JOptionPane.showMessageDialog(null, "promocion registrado");
@@ -50,25 +42,16 @@ public class CtPromocion {
                         break;
                     } else {
                         if (equipaje <= 10) {
-                            valorPromocion = 125000;
-                            nombrePromocion = "Viva";
-                            millas = 100;
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromociones.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
                         }
                         if (equipaje > 10 && equipaje <= 25) {
-                            valorPromocion = 193000;
-                            nombrePromocion = "VivaSuper";
-                            millas = 110;
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromociones.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
                         }
                         if (equipaje > 25 && equipaje <= 32) {
-                            valorPromocion = 296500;
-                            nombrePromocion = "VivaMax";
-                            millas = 120;
                             ClsPromocion promocion = new ClsPromocion(fecha, idPromocion, nombrePromocion, millas, equipaje, valorPromocion);
                             listaPromociones.add(promocion);
                             JOptionPane.showMessageDialog(null, "promocion registrado");
