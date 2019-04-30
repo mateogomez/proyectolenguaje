@@ -28,34 +28,192 @@ public class FrmAvion extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblSerialAvion = new javax.swing.JLabel();
+        lblCapacidad = new javax.swing.JLabel();
+        lblCodigoPiloto = new javax.swing.JLabel();
+        lblNombrePiloto = new javax.swing.JLabel();
+        lblCodigoAzafata = new javax.swing.JLabel();
+        lblNombreAzafata = new javax.swing.JLabel();
+        txtSerialAvion = new javax.swing.JTextField();
+        txtCapacidad = new javax.swing.JTextField();
+        txtCodigoPiloto = new javax.swing.JTextField();
+        txtNombrePiloto = new javax.swing.JTextField();
+        txtCodigoAzafata = new javax.swing.JTextField();
+        txtNombreAzafata = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnElminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        lblSerialAvion.setText("Serial Avion:");
+
+        lblCapacidad.setText("Capacidad:");
+
+        lblCodigoPiloto.setText("Codigo Piloto:");
+
+        lblNombrePiloto.setText("Nombre Piloto:");
+
+        lblCodigoAzafata.setText("Codigo Azafata:");
+
+        lblNombreAzafata.setText("Nombre Azafata:");
+
+        txtSerialAvion.setEnabled(false);
+
+        txtCapacidad.setEnabled(false);
+
+        txtCodigoPiloto.setEnabled(false);
+
+        txtNombrePiloto.setEnabled(false);
+
+        txtCodigoAzafata.setEnabled(false);
+
+        txtNombreAzafata.setEnabled(false);
+
+        btnGuardar.setText("Registrar");
+        btnGuardar.setEnabled(false);
+
+        btnBuscar.setText("Buscar");
+
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+
+        btnElminar.setText("Eliminar");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Serial Avion", "Capacidad", "Codigo Piloto", "Nombre Piloto", "Codigo Azafata", "Nombre Azafata"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(149, 149, 149))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNombreAzafata)
+                    .addComponent(lblCodigoAzafata)
+                    .addComponent(lblNombrePiloto)
+                    .addComponent(lblCodigoPiloto)
+                    .addComponent(lblCapacidad)
+                    .addComponent(lblSerialAvion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSerialAvion)
+                    .addComponent(txtNombreAzafata, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(txtCodigoAzafata)
+                    .addComponent(txtNombrePiloto)
+                    .addComponent(txtCodigoPiloto)
+                    .addComponent(txtCapacidad))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnElminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNuevo)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSerialAvion)
+                            .addComponent(txtSerialAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCapacidad)
+                            .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoPiloto)
+                    .addComponent(txtCodigoPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombrePiloto)
+                    .addComponent(txtNombrePiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoAzafata)
+                    .addComponent(txtCodigoAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombreAzafata)
+                    .addComponent(txtNombreAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnElminar)
+                    .addComponent(btnNuevo))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+       
+        txtSerialAvion.setVisible(true);
+        txtCapacidad.setVisible(true);
+        txtCodigoPiloto.setVisible(true);
+        txtNombrePiloto.setVisible(true);
+        txtCodigoAzafata.setVisible(true);
+        txtNombreAzafata.setVisible(true);
+        btnGuardar.setVisible(true);
+        btnModificar.setVisible(true);
+        limpiar();
+  
+        
+        
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    public void limpiar(){
+      
+        txtSerialAvion.setText("");
+        txtCapacidad.setText("");
+        txtCodigoPiloto.setText("");
+        txtNombrePiloto.setText("");
+        txtCodigoAzafata.setText("");
+        txtNombreAzafata.setText("");
+        
+        
+        
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -92,7 +250,25 @@ public class FrmAvion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnElminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lblCapacidad;
+    private javax.swing.JLabel lblCodigoAzafata;
+    private javax.swing.JLabel lblCodigoPiloto;
+    private javax.swing.JLabel lblNombreAzafata;
+    private javax.swing.JLabel lblNombrePiloto;
+    private javax.swing.JLabel lblSerialAvion;
+    private javax.swing.JTextField txtCapacidad;
+    private javax.swing.JTextField txtCodigoAzafata;
+    private javax.swing.JTextField txtCodigoPiloto;
+    private javax.swing.JTextField txtNombreAzafata;
+    private javax.swing.JTextField txtNombrePiloto;
+    private javax.swing.JTextField txtSerialAvion;
     // End of variables declaration//GEN-END:variables
 }
