@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mateo
  */
-public class ClsUsuario {
+public class ClsUsuario implements Serializable{
     String nombre;
     String apellido;
     String genero;
@@ -83,5 +85,5 @@ public class ClsUsuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }

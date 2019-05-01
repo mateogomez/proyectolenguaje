@@ -5,17 +5,30 @@
  */
 package Vista;
 
+import Controlador.CtEmpleado;
+import Modelo.ClsEmpleado;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mateo
  */
 public class FrmEmpleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmEmpleado
-     */
+    ArrayList<ClsEmpleado> listaEmpleado = new ArrayList<ClsEmpleado>();
+    CtEmpleado controladorEmpleado;
+
     public FrmEmpleado() {
         initComponents();
+        controladorEmpleado = new CtEmpleado();
+        try {
+            listaEmpleado = controladorEmpleado.cargarArchivo(listaEmpleado);
+            listar();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -27,21 +40,367 @@ public class FrmEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblEmpleado = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblApellido = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        CbxGenero = new javax.swing.JComboBox<>();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        lblTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        CbxCargo = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JtEmpleado = new javax.swing.JTable();
+        BtnRegistrar = new javax.swing.JButton();
+        BtnBuscar = new javax.swing.JButton();
+        BtnModificar = new javax.swing.JButton();
+        BtnEliminar = new javax.swing.JButton();
+        BtnLimpiar = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
+        BtnNuevo = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblEmpleado.setText("Empleado");
+
+        lblCedula.setText("Cedula");
+
+        txtCedula.setEnabled(false);
+
+        lblNombre.setText("Nombre");
+
+        txtNombre.setEnabled(false);
+
+        lblApellido.setText("Apellido");
+
+        lblGenero.setText("Genero");
+
+        txtApellido.setEnabled(false);
+
+        CbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        CbxGenero.setEnabled(false);
+
+        lblCorreo.setText("Correo");
+
+        txtCorreo.setEnabled(false);
+
+        lblPassword.setText("Contraseña");
+
+        jPassword.setEnabled(false);
+
+        lblTelefono.setText("Telefono");
+
+        txtTelefono.setEnabled(false);
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Cargo");
+
+        CbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piloto", "Azafata", "Vendedor", " " }));
+        CbxCargo.setEnabled(false);
+
+        JtEmpleado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Cargo", "Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono"
+            }
+        ));
+        jScrollPane1.setViewportView(JtEmpleado);
+
+        BtnRegistrar.setText("Registar");
+        BtnRegistrar.setEnabled(false);
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
+
+        BtnBuscar.setText("Buscar");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
+
+        BtnModificar.setText("Modificar");
+        BtnModificar.setEnabled(false);
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
+
+        BtnEliminar.setText("Eliminar");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
+
+        BtnLimpiar.setText("Limpiar");
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
+
+        BtnRegresar.setText("Regresar");
+
+        BtnNuevo.setText("Nuevo");
+        BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblApellido)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblCedula)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(10, 10, 10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCorreo)
+                                            .addComponent(lblTelefono))
+                                        .addGap(43, 43, 43)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(BtnNuevo)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(BtnRegistrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                        .addComponent(BtnBuscar)))
+                                .addGap(3, 3, 3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblGenero)
+                                    .addComponent(lblPassword)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lblNombre)
+                                    .addComponent(lblEmpleado))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                    .addComponent(CbxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPassword)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(BtnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnEliminar)
+                                .addGap(30, 30, 30)
+                                .addComponent(BtnLimpiar)))
+                        .addGap(22, 22, 22))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtnRegresar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblEmpleado)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCedula)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellido)
+                    .addComponent(lblGenero)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CbxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCorreo)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPassword)
+                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTelefono)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(CbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBuscar)
+                    .addComponent(BtnModificar)
+                    .addComponent(BtnEliminar)
+                    .addComponent(BtnLimpiar)
+                    .addComponent(BtnNuevo)
+                    .addComponent(BtnRegistrar))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnRegresar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        String cedula = JOptionPane.showInputDialog("ingrese cedula");
+        BtnModificar.setEnabled(true);
+        txtCedula.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        CbxGenero.setEnabled(true);
+        txtCorreo.setEnabled(true);
+        jPassword.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        CbxCargo.setEnabled(true);
+        ClsEmpleado empleado = null;
+        empleado = controladorEmpleado.buscarEmpleado(listaEmpleado, cedula);
+        if (empleado == null) {
+            limpiar();
+        } else {
+            txtCedula.setText(empleado.getCedula());
+            txtNombre.setText(empleado.getNombre());
+            txtApellido.setText(empleado.getApellido());
+            CbxGenero.setSelectedItem(empleado.getGenero());
+            txtCorreo.setText(empleado.getCorreo());
+            jPassword.setText(empleado.getPassword());
+            txtTelefono.setText(empleado.getTelefono());
+            CbxCargo.setSelectedItem(empleado.getCargo());
+
+        }
+
+    }//GEN-LAST:event_BtnBuscarActionPerformed
+
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+        String cedula = txtCedula.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String genero = CbxGenero.getSelectedItem().toString();
+        String correo = txtCorreo.getText();
+        String contrasena = jPassword.getText();
+        String telefono = txtTelefono.getText();
+        String cargo = CbxCargo.getSelectedItem().toString();
+        listaEmpleado = controladorEmpleado.registrarEmpleado(listaEmpleado, cargo, nombre, apellido, genero, cedula, correo, telefono, contrasena);
+        String res = controladorEmpleado.guardarArchivo(listaEmpleado);
+        BtnRegistrar.setEnabled(false);
+        listar();
+        limpiar();
+
+
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
+
+    private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        BtnRegistrar.setEnabled(true);
+        txtCedula.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        CbxGenero.setSelectedItem("");
+        CbxGenero.setEnabled(true);
+        txtCorreo.setEnabled(true);
+        jPassword.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        CbxCargo.setSelectedItem("");
+        CbxCargo.setEnabled(true);
+    }//GEN-LAST:event_BtnNuevoActionPerformed
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        limpiar();
+        BtnRegistrar.setEnabled(false);
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        String cedula = txtCedula.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String genero = CbxGenero.getSelectedItem().toString();
+        String correo = txtCorreo.getText();
+        String contrasena = jPassword.getText();
+        String telefono = txtTelefono.getText();
+        String cargo = CbxCargo.getSelectedItem().toString();
+        listaEmpleado = controladorEmpleado.modificarEmpleado(listaEmpleado, cargo, nombre, apellido, genero, cedula, correo, telefono, contrasena);
+        String res = controladorEmpleado.guardarArchivo(listaEmpleado);
+        BtnModificar.setEnabled(false);
+        listar();
+        limpiar();
+    }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        String cedula = JOptionPane.showInputDialog("ingrese cedula");
+        listaEmpleado = controladorEmpleado.eliminarEmpleado(listaEmpleado, cedula);
+        String res = controladorEmpleado.guardarArchivo(listaEmpleado);
+        listar();
+    }//GEN-LAST:event_BtnEliminarActionPerformed
+    public void listar() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = controladorEmpleado.listarElementos(listaEmpleado);
+        JtEmpleado.setModel(modelo);
+    }
+
+    public void limpiar() {
+        txtCedula.setText("");
+        txtCedula.setEnabled(false);
+        txtNombre.setText("");
+        txtNombre.setEnabled(false);
+        txtApellido.setText("");
+        txtApellido.setEnabled(false);
+        CbxGenero.setSelectedItem("");
+        CbxGenero.setEnabled(false);
+        txtCorreo.setText("");
+        txtCorreo.setEnabled(false);
+        jPassword.setText("");
+        jPassword.setEnabled(false);
+        txtTelefono.setText("");
+        txtTelefono.setEnabled(false);
+        CbxCargo.setSelectedItem("");
+        CbxCargo.setEnabled(false);
+        BtnModificar.setEnabled(false);
+        BtnRegistrar.setEnabled(false);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -79,5 +438,31 @@ public class FrmEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JButton BtnEliminar;
+    private javax.swing.JButton BtnLimpiar;
+    private javax.swing.JButton BtnModificar;
+    private javax.swing.JButton BtnNuevo;
+    private javax.swing.JButton BtnRegistrar;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JComboBox<String> CbxCargo;
+    private javax.swing.JComboBox<String> CbxGenero;
+    private javax.swing.JTable JtEmpleado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblEmpleado;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
