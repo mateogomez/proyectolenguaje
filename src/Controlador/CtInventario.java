@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.ClsInventario;
+import Modelo.ClsPromocion;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -64,10 +65,10 @@ public class CtInventario {
         }
         return inventario;
     }
-/* public ArrayList<ClsPromocion> eliminarPromocion(ArrayList<ClsPromocion> listaPromocion, int idPromocion) {
+public ArrayList<ClsInventario> eliminarInventario(ArrayList<ClsInventario> listaPromocion, String idPromocion) {
         int encontrado = 0;
         for (int i = 0; i < listaPromocion.size(); i++) {
-            if (idPromocion == (listaPromocion.get(i).getIdPromocion())) {
+            if (idPromocion.equals(listaPromocion.get(i).getIdInventario())) {
                 listaPromocion.remove(i);
                 JOptionPane.showMessageDialog(null, "Promocion eliminada");
                 encontrado++;
@@ -81,7 +82,7 @@ public class CtInventario {
 
         return listaPromocion;
     }
-*/
+
     public ArrayList<ClsInventario> modificarInventario(ArrayList<ClsInventario> listaInventario, String idInventario, String categoria, int cantidad, String nombre) {
         int encontrado = 0;
         for (int i = 0; i < listaInventario.size(); i++) {

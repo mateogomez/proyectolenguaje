@@ -23,13 +23,13 @@ public class FrmInventario extends javax.swing.JFrame {
     public FrmInventario() {
         initComponents();
         controladorInventario = new CtInventario();
-        try{
-            listaInventario=controladorInventario.cargarArchivo(listaInventario);
+        try {
+            listaInventario = controladorInventario.cargarArchivo(listaInventario);
             listar();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
-                
+
     }
 
     /**
@@ -245,7 +245,7 @@ public class FrmInventario extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         int cantidad = Integer.parseInt(txtCantidad.getText());
         listaInventario = controladorInventario.registrarInventario(listaInventario, idInventario, categoria, cantidad, nombre);
-        String res= controladorInventario.guardarArchivo(listaInventario);
+        String res = controladorInventario.guardarArchivo(listaInventario);
         limpiar();
         listar();
     }//GEN-LAST:event_BtnRegistrarActionPerformed
@@ -267,7 +267,7 @@ public class FrmInventario extends javax.swing.JFrame {
             txtIdinventario.setText(inventario.getIdInventario());
             CbxCategoria.setSelectedItem(inventario.getCategoria());
             txtNombre.setText(inventario.getNombre());
-            txtCantidad.setText(inventario.getCantidad()+"");
+            txtCantidad.setText(inventario.getCantidad() + "");
         }
 
 
@@ -278,15 +278,17 @@ public class FrmInventario extends javax.swing.JFrame {
         String categoria = CbxCategoria.getSelectedItem().toString();
         String nombre = txtNombre.getText();
         int cantidad = Integer.parseInt(txtCantidad.getText());
-        listaInventario=controladorInventario.modificarInventario(listaInventario, idInventario, categoria, cantidad, nombre);
-          String res= controladorInventario.guardarArchivo(listaInventario);
+        listaInventario = controladorInventario.modificarInventario(listaInventario, idInventario, categoria, cantidad, nombre);
+        String res = controladorInventario.guardarArchivo(listaInventario);
         BtnModificar.setEnabled(false);
         limpiar();
         listar();
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
+        String idInventario = JOptionPane.showInputDialog("Ingrese el id de la categoria");
+       listaInventario=controladorInventario.eliminarInventario(listaInventario, idInventario);
+       String res = controladorInventario.guardarArchivo(listaInventario);
     }//GEN-LAST:event_BtnEliminarActionPerformed
     public void limpiar() {
         BtnRegistrar.setEnabled(false);
