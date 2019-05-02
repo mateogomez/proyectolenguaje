@@ -5,17 +5,31 @@
  */
 package Vista;
 
+import Controlador.CtInventario;
+import Modelo.ClsInventario;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Javier Parra
  */
 public class FrmInventario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmInventario
-     */
+    ArrayList<ClsInventario> listaInventario = new ArrayList<ClsInventario>();
+    CtInventario controladorInventario;
+
     public FrmInventario() {
         initComponents();
+        controladorInventario = new CtInventario();
+        try{
+            listaInventario=controladorInventario.cargarArchivo(listaInventario);
+            listar();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+                
     }
 
     /**
@@ -31,7 +45,7 @@ public class FrmInventario extends javax.swing.JFrame {
         lblIdinventario = new javax.swing.JLabel();
         txtIdinventario = new javax.swing.JTextField();
         lblCategoria = new javax.swing.JLabel();
-        CbxInventario = new javax.swing.JComboBox<>();
+        CbxCategoria = new javax.swing.JComboBox<>();
         lblCantidad = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
@@ -42,7 +56,7 @@ public class FrmInventario extends javax.swing.JFrame {
         BtnEliminar = new javax.swing.JButton();
         BtnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JtInventario = new javax.swing.JTable();
         BtnRegresar = new javax.swing.JButton();
         BtnNuevo = new javax.swing.JButton();
 
@@ -56,7 +70,7 @@ public class FrmInventario extends javax.swing.JFrame {
 
         lblCategoria.setText("Categoria");
 
-        CbxInventario.setEnabled(false);
+        CbxCategoria.setEnabled(false);
 
         lblCantidad.setText("Cantidad");
 
@@ -68,17 +82,42 @@ public class FrmInventario extends javax.swing.JFrame {
 
         BtnRegistrar.setText("Registrar");
         BtnRegistrar.setEnabled(false);
+        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarActionPerformed(evt);
+            }
+        });
 
         BtnBuscar.setText("Buscar");
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
 
         BtnModificar.setText("Modificar");
         BtnModificar.setEnabled(false);
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
 
         BtnEliminar.setText("Eliminar");
+        BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarActionPerformed(evt);
+            }
+        });
 
         BtnLimpiar.setText("Limpiar");
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JtInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,11 +128,16 @@ public class FrmInventario extends javax.swing.JFrame {
                 "Id inventario", "Categoria", "Nombre", "Cantidad"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JtInventario);
 
         BtnRegresar.setText("Regresar");
 
         BtnNuevo.setText("Nuevo");
+        BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +167,7 @@ public class FrmInventario extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(CbxInventario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(CbxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtIdinventario)
                                             .addComponent(txtNombre))))
                                 .addGap(225, 225, 225)))
@@ -152,7 +196,7 @@ public class FrmInventario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCategoria)
-                    .addComponent(CbxInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
@@ -178,6 +222,90 @@ public class FrmInventario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        BtnRegistrar.setEnabled(true);
+        txtIdinventario.setEnabled(true);
+        txtIdinventario.setText("");
+        CbxCategoria.setEnabled(true);
+        CbxCategoria.setSelectedItem("");
+        txtNombre.setEnabled(true);
+        txtNombre.setText("");
+        txtCantidad.setEnabled(true);
+        txtCantidad.setText("");
+    }//GEN-LAST:event_BtnNuevoActionPerformed
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
+        String idInventario = txtIdinventario.getText();
+        String categoria = CbxCategoria.getSelectedItem().toString();
+        String nombre = txtNombre.getText();
+        int cantidad = Integer.parseInt(txtCantidad.getText());
+        listaInventario = controladorInventario.registrarInventario(listaInventario, idInventario, categoria, cantidad, nombre);
+        String res= controladorInventario.guardarArchivo(listaInventario);
+        limpiar();
+        listar();
+    }//GEN-LAST:event_BtnRegistrarActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        String idInventario = JOptionPane.showInputDialog("Ingrese el id de la categoria");
+        txtIdinventario.setEnabled(true);
+        CbxCategoria.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtCantidad.setEnabled(true);
+        ClsInventario inventario = null;
+        inventario = controladorInventario.buscarInventario(listaInventario, idInventario);
+
+        if (inventario == null) {
+            limpiar();
+        } else {
+
+            BtnModificar.setEnabled(true);
+            txtIdinventario.setText(inventario.getIdInventario());
+            CbxCategoria.setSelectedItem(inventario.getCategoria());
+            txtNombre.setText(inventario.getNombre());
+            txtCantidad.setText(inventario.getCantidad()+"");
+        }
+
+
+    }//GEN-LAST:event_BtnBuscarActionPerformed
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        String idInventario = txtIdinventario.getText();
+        String categoria = CbxCategoria.getSelectedItem().toString();
+        String nombre = txtNombre.getText();
+        int cantidad = Integer.parseInt(txtCantidad.getText());
+        listaInventario=controladorInventario.modificarInventario(listaInventario, idInventario, categoria, cantidad, nombre);
+          String res= controladorInventario.guardarArchivo(listaInventario);
+        BtnModificar.setEnabled(false);
+        limpiar();
+        listar();
+    }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnEliminarActionPerformed
+    public void limpiar() {
+        BtnRegistrar.setEnabled(false);
+        BtnModificar.setEnabled(false);
+        txtIdinventario.setEnabled(false);
+        txtIdinventario.setText("");
+        CbxCategoria.setEnabled(false);
+        CbxCategoria.setSelectedItem("");
+        txtNombre.setEnabled(false);
+        txtNombre.setText("");
+        txtCantidad.setEnabled(false);
+        txtCantidad.setText("");
+    }
+
+    public void listar() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = controladorInventario.listarElementos(listaInventario);
+        JtInventario.setModel(modelo);
+    }
 
     /**
      * @param args the command line arguments
@@ -222,9 +350,9 @@ public class FrmInventario extends javax.swing.JFrame {
     private javax.swing.JButton BtnNuevo;
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar;
-    private javax.swing.JComboBox<String> CbxInventario;
+    private javax.swing.JComboBox<String> CbxCategoria;
+    private javax.swing.JTable JtInventario;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCantidad;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblIdinventario;
