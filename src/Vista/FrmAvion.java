@@ -5,17 +5,24 @@
  */
 package Vista;
 
+import Controlador.CtlAvion;
+import Modelo.ClsAvion;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mateo
  */
 public class FrmAvion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmAvion
-     */
+    ArrayList<ClsAvion> listaAvion = new ArrayList <ClsAvion>();
+    CtlAvion controladorAvion;
+    
     public FrmAvion() {
         initComponents();
+        
+        controladorAvion = new CtlAvion();
     }
 
     /**
@@ -45,7 +52,7 @@ public class FrmAvion extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnElminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableAvion = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
@@ -78,6 +85,11 @@ public class FrmAvion extends javax.swing.JFrame {
 
         btnGuardar.setText("Registrar");
         btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -86,7 +98,7 @@ public class FrmAvion extends javax.swing.JFrame {
 
         btnElminar.setText("Eliminar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAvion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -97,7 +109,7 @@ public class FrmAvion extends javax.swing.JFrame {
                 "Serial Avion", "Capacidad", "Codigo Piloto", "Nombre Piloto", "Codigo Azafata", "Nombre Azafata"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableAvion);
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +213,23 @@ public class FrmAvion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnNuevoActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+      
+        String serial = txtSerialAvion.getText();
+        int capacidad = Integer.parseInt(txtCapacidad.getText());
+        String codigoPiloto = txtCodigoPiloto.getText();
+        String nombrePiloto = txtNombrePiloto.getText();
+        String codigoAzafata = txtCodigoAzafata.getText();
+        String nombreAzafata = txtNombreAzafata.getText();
+        listaAvion = controladorAvion.registrarAvion(listaAvion, serial, codigoPiloto, nombrePiloto, codigoAzafata, nombreAzafata, capacidad);
+        listar();
+        limpiar();
+        
+        
+        
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     public void limpiar(){
       
         txtSerialAvion.setText("");
@@ -209,14 +238,16 @@ public class FrmAvion extends javax.swing.JFrame {
         txtNombrePiloto.setText("");
         txtCodigoAzafata.setText("");
         txtNombreAzafata.setText("");
-        
-        
-        
-        
+
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    public void listar(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = controladorAvion.listarElementos(listaAvion);
+        jTableAvion.setModel(modelo);
+                
+    }
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -256,7 +287,7 @@ public class FrmAvion extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAvion;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblCapacidad;
     private javax.swing.JLabel lblCodigoAzafata;
