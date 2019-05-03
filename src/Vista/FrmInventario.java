@@ -146,6 +146,11 @@ public class FrmInventario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(JtInventario);
 
         BtnRegresar.setText("Regresar");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
 
         BtnNuevo.setText("Nuevo");
         BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -326,6 +331,12 @@ public class FrmInventario extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtCantidadKeyTyped
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+       FrmAdministrador administrador=new FrmAdministrador();
+       administrador.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
     public void limpiar() {
         BtnRegistrar.setEnabled(false);
         BtnModificar.setEnabled(false);

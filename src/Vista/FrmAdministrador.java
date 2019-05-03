@@ -39,13 +39,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         BtnRegresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        JmtEmpleado = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        JmtAerolinea = new javax.swing.JMenu();
+        JmtEmpleado = new javax.swing.JMenuItem();
+        JmtCliente = new javax.swing.JMenuItem();
+        JmtPromocion = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        JmtInventario = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -60,35 +60,50 @@ public class FrmAdministrador extends javax.swing.JFrame {
             }
         });
 
-        JmtEmpleado.setText("Aerolinea");
+        JmtAerolinea.setText("Aerolinea");
+        JmtAerolinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtAerolineaActionPerformed(evt);
+            }
+        });
+
+        JmtEmpleado.setText("Empleados");
         JmtEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JmtEmpleadoActionPerformed(evt);
             }
         });
+        JmtAerolinea.add(JmtEmpleado);
 
-        jMenuItem1.setText("Empleados");
-        JmtEmpleado.add(jMenuItem1);
+        JmtCliente.setText("Clientes");
+        JmtAerolinea.add(JmtCliente);
 
-        jMenuItem8.setText("Clientes");
-        JmtEmpleado.add(jMenuItem8);
-
-        jMenuItem2.setText("Promociones");
-        JmtEmpleado.add(jMenuItem2);
+        JmtPromocion.setText("Promociones");
+        JmtPromocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtPromocionActionPerformed(evt);
+            }
+        });
+        JmtAerolinea.add(JmtPromocion);
 
         jMenuItem3.setText("Rutas");
-        JmtEmpleado.add(jMenuItem3);
+        JmtAerolinea.add(jMenuItem3);
 
         jMenuItem4.setText("Aviones");
-        JmtEmpleado.add(jMenuItem4);
+        JmtAerolinea.add(jMenuItem4);
 
-        jMenuItem5.setText("Inventario");
-        JmtEmpleado.add(jMenuItem5);
+        JmtInventario.setText("Inventario");
+        JmtInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtInventarioActionPerformed(evt);
+            }
+        });
+        JmtAerolinea.add(JmtInventario);
 
         jMenuItem6.setText("Informacion aerolinea");
-        JmtEmpleado.add(jMenuItem6);
+        JmtAerolinea.add(jMenuItem6);
 
-        jMenuBar1.add(JmtEmpleado);
+        jMenuBar1.add(JmtAerolinea);
 
         jMenu2.setText("Reservas");
 
@@ -126,11 +141,27 @@ public class FrmAdministrador extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
+    private void JmtAerolineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtAerolineaActionPerformed
+
+    }//GEN-LAST:event_JmtAerolineaActionPerformed
+
     private void JmtEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtEmpleadoActionPerformed
         FrmEmpleado empleado = new FrmEmpleado();
         empleado.setVisible(true);
         dispose();
     }//GEN-LAST:event_JmtEmpleadoActionPerformed
+
+    private void JmtPromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtPromocionActionPerformed
+        FrmPromocion promocion = new FrmPromocion();
+        promocion.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtPromocionActionPerformed
+
+    private void JmtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtInventarioActionPerformed
+        FrmInventario inventario = new FrmInventario();
+        inventario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,17 +200,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
-    private javax.swing.JMenu JmtEmpleado;
+    private javax.swing.JMenu JmtAerolinea;
+    private javax.swing.JMenuItem JmtCliente;
+    private javax.swing.JMenuItem JmtEmpleado;
+    private javax.swing.JMenuItem JmtInventario;
+    private javax.swing.JMenuItem JmtPromocion;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

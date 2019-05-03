@@ -427,7 +427,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
-      
+
     }//GEN-LAST:event_txtCorreoKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
@@ -438,8 +438,8 @@ public class FrmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        FrmLogin login= new FrmLogin();
-        login.setVisible(true);
+        FrmAdministrador administrador = new FrmAdministrador();
+        administrador.setVisible(true);
         dispose();
     }//GEN-LAST:event_BtnRegresarActionPerformed
     public void listar() {
