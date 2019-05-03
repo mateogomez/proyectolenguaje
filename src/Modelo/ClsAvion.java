@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Javier Parra
  */
-public class ClsAvion {
+public class ClsAvion  implements Serializable{
     
     
     String serial, codigoPiloto, nombrePiloto, codigoAzafata, nombreAzafata;

@@ -21,9 +21,14 @@ public class FrmAvion extends javax.swing.JFrame {
     CtlAvion controladorAvion;
     
     public FrmAvion() {
-        initComponents();
-        
+        initComponents();       
         controladorAvion = new CtlAvion();
+        try {
+            listaAvion = controladorAvion.cargarArchivo(listaAvion);
+            listar();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -55,6 +60,7 @@ public class FrmAvion extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAvion = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -164,6 +170,13 @@ public class FrmAvion extends javax.swing.JFrame {
             }
         });
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,15 +203,18 @@ public class FrmAvion extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnElminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNuevo)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegresar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnElminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNuevo)))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,11 +247,12 @@ public class FrmAvion extends javax.swing.JFrame {
                             .addComponent(btnModificar)
                             .addComponent(btnElminar)
                             .addComponent(btnNuevo))))
-                .addGap(16, 16, 16)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombrePiloto)
-                    .addComponent(txtNombrePiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(txtNombrePiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresar))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoAzafata)
                     .addComponent(txtCodigoAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,9 +277,6 @@ public class FrmAvion extends javax.swing.JFrame {
         btnGuardar.setEnabled(true);
         btnModificar.setEnabled(true);
         limpiar();
-  
-        
-        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -274,6 +288,7 @@ public class FrmAvion extends javax.swing.JFrame {
         String codigoAzafata = txtCodigoAzafata.getText();
         String nombreAzafata = txtNombreAzafata.getText();
         listaAvion = controladorAvion.registrarAvion(listaAvion, serial, codigoPiloto, nombrePiloto, codigoAzafata, nombreAzafata, capacidad);
+        String res = controladorAvion.guardarArchivo(listaAvion);
         listar();
         limpiar();
         
@@ -312,6 +327,7 @@ public class FrmAvion extends javax.swing.JFrame {
         String codigoAzafata = txtCodigoAzafata.getText();
         String nombreAzafata = txtNombreAzafata.getText(); 
         listaAvion = controladorAvion.modificarAvion(listaAvion, serial, codigoPiloto, nombrePiloto, codigoAzafata, nombreAzafata, capacidad);
+        String res = controladorAvion.guardarArchivo(listaAvion);
         listar();
         limpiar();
  
@@ -321,6 +337,7 @@ public class FrmAvion extends javax.swing.JFrame {
     private void btnElminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElminarActionPerformed
         String serial = JOptionPane.showInputDialog("ingrese el serial del avion que desea eliminar");
         listaAvion = controladorAvion.EliminarAvion(listaAvion, serial);
+        String res = controladorAvion.guardarArchivo(listaAvion);
         listar();     
     }//GEN-LAST:event_btnElminarActionPerformed
 
@@ -367,6 +384,13 @@ public class FrmAvion extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreAzafataKeyTyped
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        FrmLogin login= new FrmLogin();
+        login.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     public void limpiar(){
       
@@ -423,6 +447,7 @@ public class FrmAvion extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAvion;
     private javax.swing.JToggleButton jToggleButton1;

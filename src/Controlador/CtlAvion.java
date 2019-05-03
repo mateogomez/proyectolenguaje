@@ -127,9 +127,9 @@ public class CtlAvion {
           
            for (int i = 0; i < listaAvion.size(); i++) {
                
-               modelo.addRow(new Object[]{listaAvion.get(i).getSerial(), listaAvion.get(i).getCodigoPiloto(), listaAvion.get(i).getNombrePiloto(), listaAvion.get(i).getCodigoAzafata(),
+               modelo.addRow(new Object[]{listaAvion.get(i).getSerial(), listaAvion.get(i).getCapacidad(),  listaAvion.get(i).getCodigoPiloto(), listaAvion.get(i).getNombrePiloto(),
                    
-               listaAvion.get(i).getNombreAzafata(), listaAvion.get(i).getCapacidad()});
+               listaAvion.get(i).getCodigoAzafata(), listaAvion.get(i).getNombreAzafata()});
                
            }
        
