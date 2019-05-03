@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmLogin extends javax.swing.JFrame {
 
+    ClsAdministrador administrado;
     ArrayList<ClsEmpleado> listaEmpleado = new ArrayList<ClsEmpleado>();
     ArrayList<ClsCliente> listaCliente = new ArrayList<ClsCliente>();
     CtEmpleado controladorEmpleado;
@@ -28,6 +29,7 @@ public class FrmLogin extends javax.swing.JFrame {
         initComponents();
         controladorEmpleado = new CtEmpleado();
         controladorLogin = new CtLogin();
+        administrado = new ClsAdministrador();
         try {
             listaEmpleado = controladorEmpleado.cargarArchivo(listaEmpleado);
         } catch (Exception e) {
@@ -60,7 +62,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         JmGestionar = new javax.swing.JMenu();
         JmtGestionarCliente = new javax.swing.JMenuItem();
-        JmtGestionarEmpleado = new javax.swing.JMenuItem();
         JmOpciones = new javax.swing.JMenu();
         JtmSalir = new javax.swing.JMenuItem();
 
@@ -113,18 +114,15 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
-        JmGestionar.setText("Gestionar");
+        JmGestionar.setText("Registro");
 
-        JmtGestionarCliente.setText("Gestionar Cliente");
-        JmGestionar.add(JmtGestionarCliente);
-
-        JmtGestionarEmpleado.setText("Gestionar Empleado");
-        JmtGestionarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        JmtGestionarCliente.setText("Cliente");
+        JmtGestionarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmtGestionarEmpleadoActionPerformed(evt);
+                JmtGestionarClienteActionPerformed(evt);
             }
         });
-        JmGestionar.add(JmtGestionarEmpleado);
+        JmGestionar.add(JmtGestionarCliente);
 
         jMenuBar1.add(JmGestionar);
 
@@ -171,10 +169,10 @@ public class FrmLogin extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addComponent(txtCedula)))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(132, 132, 132)
                 .addComponent(BtnIngresar)
-                .addGap(141, 141, 141))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +194,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(JpasswordContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(BtnIngresar)
-                .addGap(54, 54, 54))
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -212,12 +210,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_JrbtnEmpleadoActionPerformed
-
-    private void JmtGestionarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtGestionarEmpleadoActionPerformed
-        FrmEmpleado empleado = new FrmEmpleado();
-        empleado.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_JmtGestionarEmpleadoActionPerformed
 
     private void JrbtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JrbtnClienteActionPerformed
         BtnIngresar.setEnabled(true);
@@ -249,7 +241,7 @@ public class FrmLogin extends javax.swing.JFrame {
             String cedula = txtCedula.getText();
             String password = JpasswordContrasena.getText();
             String administrador = JrbtnAdministrador.getText();
-            ClsAdministrador administrado = new ClsAdministrador();
+          
             String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, administrador, cedula, password);
             if (respuesta.equals("Si")) {
                 FrmAdministrador administradores = new FrmAdministrador();
@@ -264,6 +256,10 @@ public class FrmLogin extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_BtnIngresarActionPerformed
+
+    private void JmtGestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtGestionarClienteActionPerformed
+       
+    }//GEN-LAST:event_JmtGestionarClienteActionPerformed
     public void limpiar() {
         txtCedula.setText("");
         JpasswordContrasena.setText("");
@@ -310,7 +306,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JMenu JmGestionar;
     private javax.swing.JMenu JmOpciones;
     private javax.swing.JMenuItem JmtGestionarCliente;
-    private javax.swing.JMenuItem JmtGestionarEmpleado;
     private javax.swing.JPasswordField JpasswordContrasena;
     private javax.swing.JRadioButton JrbtnAdministrador;
     private javax.swing.JRadioButton JrbtnCliente;
