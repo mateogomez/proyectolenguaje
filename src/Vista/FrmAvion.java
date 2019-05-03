@@ -8,6 +8,7 @@ package Vista;
 import Controlador.CtlAvion;
 import Modelo.ClsAvion;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -72,16 +73,46 @@ public class FrmAvion extends javax.swing.JFrame {
         lblNombreAzafata.setText("Nombre Azafata:");
 
         txtSerialAvion.setEnabled(false);
+        txtSerialAvion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSerialAvionKeyTyped(evt);
+            }
+        });
 
         txtCapacidad.setEnabled(false);
+        txtCapacidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCapacidadKeyTyped(evt);
+            }
+        });
 
         txtCodigoPiloto.setEnabled(false);
+        txtCodigoPiloto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoPilotoKeyTyped(evt);
+            }
+        });
 
         txtNombrePiloto.setEnabled(false);
+        txtNombrePiloto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombrePilotoKeyTyped(evt);
+            }
+        });
 
         txtCodigoAzafata.setEnabled(false);
+        txtCodigoAzafata.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoAzafataKeyTyped(evt);
+            }
+        });
 
         txtNombreAzafata.setEnabled(false);
+        txtNombreAzafata.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreAzafataKeyTyped(evt);
+            }
+        });
 
         btnGuardar.setText("Registrar");
         btnGuardar.setEnabled(false);
@@ -92,11 +123,26 @@ public class FrmAvion extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnElminar.setText("Eliminar");
+        btnElminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElminarActionPerformed(evt);
+            }
+        });
 
         jTableAvion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,10 +189,11 @@ public class FrmAvion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnElminar)
@@ -159,22 +206,32 @@ public class FrmAvion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSerialAvion)
-                            .addComponent(txtSerialAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSerialAvion)
+                                    .addComponent(txtSerialAvion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCapacidad)
+                                    .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCapacidad)
-                            .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigoPiloto)
-                    .addComponent(txtCodigoPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                            .addComponent(lblCodigoPiloto)
+                            .addComponent(txtCodigoPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnModificar)
+                            .addComponent(btnElminar)
+                            .addComponent(btnNuevo))))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombrePiloto)
                     .addComponent(txtNombrePiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,16 +239,11 @@ public class FrmAvion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoAzafata)
                     .addComponent(txtCodigoAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreAzafata)
-                    .addComponent(txtNombreAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnElminar)
-                    .addComponent(btnNuevo))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(txtNombreAzafata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,6 +282,92 @@ public class FrmAvion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+      
+        String serial = JOptionPane.showInputDialog("Ingrese el serial del avion que desea buscar");
+        txtSerialAvion.setEnabled(false);
+        ClsAvion avion = null;
+        avion = controladorAvion.buscarAvion(listaAvion, serial);
+        if(avion == null){
+         limpiar();   
+        }else{
+           txtSerialAvion.setText(avion.getSerial());
+           txtCapacidad.setText(avion.getCapacidad()+"");
+           txtCodigoPiloto.setText(avion.getCodigoPiloto());
+           txtNombrePiloto.setText(avion.getNombrePiloto());
+           txtCodigoAzafata.setText(avion.getCodigoAzafata());
+           txtNombreAzafata.setText(avion.getNombreAzafata());
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+      
+         String serial = txtSerialAvion.getText();
+        int capacidad = Integer.parseInt(txtCapacidad.getText());
+        String codigoPiloto = txtCodigoPiloto.getText();
+        String nombrePiloto = txtNombrePiloto.getText();
+        String codigoAzafata = txtCodigoAzafata.getText();
+        String nombreAzafata = txtNombreAzafata.getText(); 
+        listaAvion = controladorAvion.modificarAvion(listaAvion, serial, codigoPiloto, nombrePiloto, codigoAzafata, nombreAzafata, capacidad);
+        listar();
+        limpiar();
+ 
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnElminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElminarActionPerformed
+        String serial = JOptionPane.showInputDialog("ingrese el serial del avion que desea eliminar");
+        listaAvion = controladorAvion.EliminarAvion(listaAvion, serial);
+        listar();     
+    }//GEN-LAST:event_btnElminarActionPerformed
+
+    private void txtCapacidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCapacidadKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCapacidadKeyTyped
+
+    private void txtSerialAvionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerialAvionKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSerialAvionKeyTyped
+
+    private void txtCodigoPilotoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoPilotoKeyTyped
+       char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoPilotoKeyTyped
+
+    private void txtCodigoAzafataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoAzafataKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoAzafataKeyTyped
+
+    private void txtNombrePilotoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombrePilotoKeyTyped
+        
+                char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombrePilotoKeyTyped
+
+    private void txtNombreAzafataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAzafataKeyTyped
+                char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreAzafataKeyTyped
+
     public void limpiar(){
       
         txtSerialAvion.setText("");
@@ -238,7 +376,6 @@ public class FrmAvion extends javax.swing.JFrame {
         txtNombrePiloto.setText("");
         txtCodigoAzafata.setText("");
         txtNombreAzafata.setText("");
-
     }
     
     public void listar(){

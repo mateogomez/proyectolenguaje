@@ -118,15 +118,6 @@ public class CtlAvion {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public DefaultTableModel listarElementos(ArrayList<ClsAvion> listaAvion){
        DefaultTableModel modelo;
        String nombreColumnas [] = {"Serial", "Capacidad", "Codigo Piloto", "Nombre Piloto", "Codigo Azafata", "Nombre Azafata"};
@@ -149,7 +140,57 @@ public class CtlAvion {
         return modelo;
     }
     
-    
+    public String guardarArchivo(ArrayList<ClsAvion> listaAvion) {
+        FileOutputStream archivo = null; //reservar en memoria un espacio para la creacion del archivo
+
+        try {
+            archivo = new FileOutputStream("Avion.dat");
+        } catch (Exception e) {
+            return "Error creando el archivo";
+        }
+
+        ObjectOutputStream escrituraArchivo = null; //creamos un objeto para la escritura en el archivo
+
+        try {
+            escrituraArchivo = new ObjectOutputStream(archivo);// se asigna al archivo anteriormente cargado
+        } catch (Exception e) {
+            return "Error con el archivo";
+        }
+
+        try {
+            escrituraArchivo.writeObject(listaAvion);// ingresar el listado al archivo creado
+            return "Se guardo correctamente";
+        } catch (Exception e) {
+            return "Error almacenando la informacion";
+        }
+
+    }
+
+    public ArrayList<ClsAvion> cargarArchivo(ArrayList<ClsAvion> listaAvion) {
+        FileInputStream archivo = null; // se reserva el espacio en memoria para el archivo que se va a cargar
+
+        try {
+            archivo = new FileInputStream("Avion.dat");//se lee el archivo creado en el guardar
+        } catch (Exception e) {
+            // return "Error cargando el archivo";
+        }
+
+        ObjectInputStream lecturaArchivo = null;// definimos un objeto para la lectura del archivo
+
+        try {
+            lecturaArchivo = new ObjectInputStream(archivo); // se lo asignamos al archivo leido anteiormente
+        } catch (Exception e) {
+            //  return "Error con el archivo";
+        }
+
+        try {
+            listaAvion = (ArrayList<ClsAvion>) lecturaArchivo.readObject();// se saca la informacion del archivo cargado
+        } catch (Exception e) {
+            //return "Error cargando la informacion";
+        }
+        return listaAvion;
+        // return "Archivo cargado correctamente";
+    }
     
     
     
