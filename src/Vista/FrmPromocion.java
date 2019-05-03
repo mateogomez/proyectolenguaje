@@ -78,10 +78,20 @@ public class FrmPromocion extends javax.swing.JFrame {
         lblIdpromocion.setText("Id promocion");
 
         txtIdpromocion.setEnabled(false);
+        txtIdpromocion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdpromocionKeyTyped(evt);
+            }
+        });
 
         lblMillas.setText("Millas");
 
         txtMillas.setEnabled(false);
+        txtMillas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMillasKeyTyped(evt);
+            }
+        });
 
         lblEquipaje.setText("Equipaje");
 
@@ -89,6 +99,11 @@ public class FrmPromocion extends javax.swing.JFrame {
         txtEquipaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEquipajeActionPerformed(evt);
+            }
+        });
+        txtEquipaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEquipajeKeyTyped(evt);
             }
         });
 
@@ -142,10 +157,20 @@ public class FrmPromocion extends javax.swing.JFrame {
         lblNombrepromocion.setText("Nombre promocion");
 
         txtNombrepromocion.setEnabled(false);
+        txtNombrepromocion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombrepromocionKeyTyped(evt);
+            }
+        });
 
         lblValorpromocion.setText("Valor de promocion");
 
         txtValorpromocion.setEnabled(false);
+        txtValorpromocion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorpromocionKeyTyped(evt);
+            }
+        });
 
         BtnLimpiar.setText("Limpiar");
         BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -343,6 +368,41 @@ public class FrmPromocion extends javax.swing.JFrame {
         String res = controladorPromocion.guardarArchivo(listapromocion);
         listar();
     }//GEN-LAST:event_BtnEliminarActionPerformed
+
+    private void txtNombrepromocionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombrepromocionKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombrepromocionKeyTyped
+
+    private void txtMillasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMillasKeyTyped
+       char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMillasKeyTyped
+
+    private void txtEquipajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEquipajeKeyTyped
+         char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEquipajeKeyTyped
+
+    private void txtValorpromocionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorpromocionKeyTyped
+       char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtValorpromocionKeyTyped
+
+    private void txtIdpromocionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdpromocionKeyTyped
+      char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdpromocionKeyTyped
     public void listar() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo = controladorPromocion.listarElementos(listapromocion);

@@ -67,6 +67,11 @@ public class FrmInventario extends javax.swing.JFrame {
         lblIdinventario.setText("Id inventario");
 
         txtIdinventario.setEnabled(false);
+        txtIdinventario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdinventarioKeyTyped(evt);
+            }
+        });
 
         lblCategoria.setText("Categoria");
 
@@ -75,10 +80,20 @@ public class FrmInventario extends javax.swing.JFrame {
         lblCantidad.setText("Cantidad");
 
         txtCantidad.setEnabled(false);
+        txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyTyped(evt);
+            }
+        });
 
         lblNombre.setText("Nombre");
 
         txtNombre.setEnabled(false);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         BtnRegistrar.setText("Registrar");
         BtnRegistrar.setEnabled(false);
@@ -287,9 +302,30 @@ public class FrmInventario extends javax.swing.JFrame {
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         String idInventario = JOptionPane.showInputDialog("Ingrese el id de la categoria");
-       listaInventario=controladorInventario.eliminarInventario(listaInventario, idInventario);
-       String res = controladorInventario.guardarArchivo(listaInventario);
+        listaInventario = controladorInventario.eliminarInventario(listaInventario, idInventario);
+        String res = controladorInventario.guardarArchivo(listaInventario);
     }//GEN-LAST:event_BtnEliminarActionPerformed
+
+    private void txtIdinventarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdinventarioKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdinventarioKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCantidadKeyTyped
     public void limpiar() {
         BtnRegistrar.setEnabled(false);
         BtnModificar.setEnabled(false);
