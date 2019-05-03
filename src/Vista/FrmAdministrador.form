@@ -38,10 +38,13 @@
                 <Property name="text" type="java.lang.String" value="Rutas"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="JmtAviones">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aviones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JmtAvionesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JmtInventario">
               <Properties>

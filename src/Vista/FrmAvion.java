@@ -386,9 +386,9 @@ public class FrmAvion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreAzafataKeyTyped
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        FrmLogin login= new FrmLogin();
-        login.setVisible(true);
-        dispose();
+       FrmAdministrador administrador= new FrmAdministrador();
+       administrador.setVisible(true);
+       dispose();
         
     }//GEN-LAST:event_btnRegresarActionPerformed
 
