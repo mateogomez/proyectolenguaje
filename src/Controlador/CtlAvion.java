@@ -51,6 +51,81 @@ public class CtlAvion {
         return listaAvion;
     }
     
+    public ClsAvion buscarAvion(ArrayList<ClsAvion> listaAvion, String serial){
+         ClsAvion avion = null;
+       
+         int encontrado  = 0;
+         
+         try{
+             for (int i = 0; i < listaAvion.size(); i++) {
+                 
+                 if(serial.equals(listaAvion.get(i).getSerial())){
+                     avion = listaAvion.get(i);
+                     encontrado++;
+                     break;
+                 }
+             }
+           if(encontrado == 0){
+               JOptionPane.showMessageDialog(null, "No se encontro ningun avion con ese serial");
+           }  
+   
+         }catch (Exception e){
+         System.out.println(e.toString());
+         }
+       return avion;
+    }
+    
+    public ArrayList <ClsAvion> EliminarAvion(ArrayList<ClsAvion> listaAvion, String serial){
+        int encontrado = 0;
+        for (int i = 0; i < listaAvion.size(); i++) {
+            if(serial.equals(listaAvion.get(i).getSerial())){
+                listaAvion.remove(i);
+                JOptionPane.showMessageDialog(null, "Avion Eliminado Exitosamente");
+                encontrado++;
+                break;
+            }
+        }
+        if(encontrado == 0){
+            JOptionPane.showMessageDialog(null, "No se encontro ningun avion con ese serial");
+            
+        }               
+        return listaAvion;
+    }
+    
+    public ArrayList<ClsAvion> modificarAvion(ArrayList<ClsAvion> listaAvion, String serial,String codigoPiloto, String nombrePiloto, String codigoAzafata, String nombreAzafata, int capacidad  ){
+        int encontrado = 0;
+        for (int i = 0; i < listaAvion.size(); i++) {
+            if(serial.equals(listaAvion.get(i).getSerial())){
+                
+              
+                listaAvion.get(i).setCapacidad(capacidad);
+                listaAvion.get(i).setCodigoPiloto(codigoPiloto);
+                listaAvion.get(i).setNombrePiloto(nombrePiloto);
+                listaAvion.get(i).setCodigoAzafata(codigoAzafata);
+                listaAvion.get(i).setNombreAzafata(nombreAzafata);
+                
+                JOptionPane.showMessageDialog(null, "Avion Modificado");
+                encontrado++;
+                break;
+            } 
+        }
+        if(encontrado == 0){
+            JOptionPane.showMessageDialog(null, "No se encontro ningun avion con ese serial");
+        }
+  
+        
+        return listaAvion;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public DefaultTableModel listarElementos(ArrayList<ClsAvion> listaAvion){
        DefaultTableModel modelo;
