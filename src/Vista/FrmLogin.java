@@ -5,17 +5,34 @@
  */
 package Vista;
 
+import Controlador.CtEmpleado;
+import Controlador.CtLogin;
+import Modelo.ClsAdministrador;
+import Modelo.ClsCliente;
+import Modelo.ClsEmpleado;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mateo
  */
 public class FrmLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmLogin
-     */
+    ArrayList<ClsEmpleado> listaEmpleado = new ArrayList<ClsEmpleado>();
+    ArrayList<ClsCliente> listaCliente = new ArrayList<ClsCliente>();
+    CtEmpleado controladorEmpleado;
+    CtLogin controladorLogin;
+
     public FrmLogin() {
         initComponents();
+        controladorEmpleado = new CtEmpleado();
+        controladorLogin = new CtLogin();
+        try {
+            listaEmpleado = controladorEmpleado.cargarArchivo(listaEmpleado);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
@@ -41,10 +58,11 @@ public class FrmLogin extends javax.swing.JFrame {
         lblPregunta = new javax.swing.JLabel();
         JrbtnAdministrador = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        JmGestionar = new javax.swing.JMenu();
         JmtGestionarCliente = new javax.swing.JMenuItem();
         JmtGestionarEmpleado = new javax.swing.JMenuItem();
-        JmtSalir = new javax.swing.JMenuItem();
+        JmOpciones = new javax.swing.JMenu();
+        JtmSalir = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -79,6 +97,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         BtnIngresar.setText("Ingresar");
         BtnIngresar.setEnabled(false);
+        BtnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnIngresarActionPerformed(evt);
+            }
+        });
 
         lblPregunta.setText("Desea ingresar a :");
 
@@ -90,10 +113,10 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Gestionar");
+        JmGestionar.setText("Gestionar");
 
         JmtGestionarCliente.setText("Gestionar Cliente");
-        jMenu1.add(JmtGestionarCliente);
+        JmGestionar.add(JmtGestionarCliente);
 
         JmtGestionarEmpleado.setText("Gestionar Empleado");
         JmtGestionarEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -101,17 +124,21 @@ public class FrmLogin extends javax.swing.JFrame {
                 JmtGestionarEmpleadoActionPerformed(evt);
             }
         });
-        jMenu1.add(JmtGestionarEmpleado);
+        JmGestionar.add(JmtGestionarEmpleado);
 
-        JmtSalir.setText("Salir");
-        JmtSalir.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(JmGestionar);
+
+        JmOpciones.setText("Opciones");
+
+        JtmSalir.setText("Salir");
+        JtmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmtSalirActionPerformed(evt);
+                JtmSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(JmtSalir);
+        JmOpciones.add(JtmSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(JmOpciones);
 
         setJMenuBar(jMenuBar1);
 
@@ -123,15 +150,14 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBienvenido)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPregunta)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JrbtnEmpleado)
-                                    .addComponent(JrbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JrbtnAdministrador))))
+                        .addComponent(lblPregunta)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JrbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JrbtnAdministrador)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblBienvenido)
+                                .addComponent(JrbtnEmpleado)))
                         .addGap(0, 125, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -145,10 +171,10 @@ public class FrmLogin extends javax.swing.JFrame {
                                 .addGap(44, 44, 44)
                                 .addComponent(txtCedula)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnIngresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,12 +214,10 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_JrbtnEmpleadoActionPerformed
 
     private void JmtGestionarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtGestionarEmpleadoActionPerformed
-
-    }//GEN-LAST:event_JmtGestionarEmpleadoActionPerformed
-
-    private void JmtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtSalirActionPerformed
+        FrmEmpleado empleado = new FrmEmpleado();
+        empleado.setVisible(true);
         dispose();
-    }//GEN-LAST:event_JmtSalirActionPerformed
+    }//GEN-LAST:event_JmtGestionarEmpleadoActionPerformed
 
     private void JrbtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JrbtnClienteActionPerformed
         BtnIngresar.setEnabled(true);
@@ -208,6 +232,38 @@ public class FrmLogin extends javax.swing.JFrame {
         JpasswordContrasena.setEnabled(true);
         limpiar();
     }//GEN-LAST:event_JrbtnAdministradorActionPerformed
+
+    private void JtmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtmSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_JtmSalirActionPerformed
+
+    private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
+
+        if (JrbtnEmpleado.isSelected()) {
+
+        }
+        if (JrbtnCliente.isSelected()) {
+
+        }
+        if (JrbtnAdministrador.isSelected()) {
+            String cedula = txtCedula.getText();
+            String password = JpasswordContrasena.getText();
+            String administrador = JrbtnAdministrador.getText();
+            ClsAdministrador administrado = new ClsAdministrador();
+            String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, administrador, cedula, password);
+            if (respuesta.equals("Si")) {
+                FrmAdministrador administradores = new FrmAdministrador();
+                administradores.setVisible(true);
+                dispose();
+            } else {
+                if (respuesta.equals("No")) {
+                    JOptionPane.showMessageDialog(null, "cedula o password incorrecto");
+                    limpiar();
+                }
+            }
+
+        }
+    }//GEN-LAST:event_BtnIngresarActionPerformed
     public void limpiar() {
         txtCedula.setText("");
         JpasswordContrasena.setText("");
@@ -251,15 +307,16 @@ public class FrmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BtgrpSeleccion;
     private javax.swing.JButton BtnIngresar;
+    private javax.swing.JMenu JmGestionar;
+    private javax.swing.JMenu JmOpciones;
     private javax.swing.JMenuItem JmtGestionarCliente;
     private javax.swing.JMenuItem JmtGestionarEmpleado;
-    private javax.swing.JMenuItem JmtSalir;
     private javax.swing.JPasswordField JpasswordContrasena;
     private javax.swing.JRadioButton JrbtnAdministrador;
     private javax.swing.JRadioButton JrbtnCliente;
     private javax.swing.JRadioButton JrbtnEmpleado;
+    private javax.swing.JMenuItem JtmSalir;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblBienvenido;

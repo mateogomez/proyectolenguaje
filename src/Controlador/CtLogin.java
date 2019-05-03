@@ -39,10 +39,10 @@ public class CtLogin {
                 }
             } else {
                  if (tipoUsuario.equalsIgnoreCase("Administrador")){
-                     if((cedula.equals(administrador.getUsuario()))&&(password.equals(administrador.getPassword()))){
-                         respuesta="Si";
+                     if(cedula.equals(administrador.getUsuario())&&password.equals(administrador.getPassword())){
+                        return "Si";
                      }else {
-                         respuesta="No";
+                         return "No";
                      }
                  }
             }

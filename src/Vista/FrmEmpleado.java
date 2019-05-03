@@ -186,6 +186,11 @@ public class FrmEmpleado extends javax.swing.JFrame {
         });
 
         BtnRegresar.setText("Regresar");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
 
         BtnNuevo.setText("Nuevo");
         BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +436,12 @@ public class FrmEmpleado extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        FrmLogin login= new FrmLogin();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
     public void listar() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo = controladorEmpleado.listarElementos(listaEmpleado);
