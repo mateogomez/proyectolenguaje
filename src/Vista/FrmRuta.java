@@ -5,17 +5,31 @@
  */
 package Vista;
 
+import Controlador.CtlRuta;
+import Modelo.ClsRuta;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Javier Parra
  */
 public class FrmRuta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmRuta
-     */
+   ArrayList<ClsRuta> listaRuta = new ArrayList<ClsRuta>();
+   CtlRuta controladorRuta;
     public FrmRuta() {
         initComponents();
+     controladorRuta = new CtlRuta();
+     try {
+            listaRuta = controladorRuta.cargarArchivo(listaRuta);
+            listar();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        
     }
 
     /**
@@ -34,12 +48,13 @@ public class FrmRuta extends javax.swing.JFrame {
         txtDestino = new javax.swing.JTextField();
         txtRuta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableRuta = new javax.swing.JTable();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,12 +65,27 @@ public class FrmRuta extends javax.swing.JFrame {
         lblNumeroRuta.setText("Numero Ruta:");
 
         txtOrigen.setEnabled(false);
+        txtOrigen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtOrigenKeyTyped(evt);
+            }
+        });
 
         txtDestino.setEnabled(false);
+        txtDestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDestinoKeyTyped(evt);
+            }
+        });
 
         txtRuta.setEnabled(false);
+        txtRuta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutaKeyTyped(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableRuta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -66,23 +96,50 @@ public class FrmRuta extends javax.swing.JFrame {
                 "Origen", "Destino", "Numero Ruta"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableRuta);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.setEnabled(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
             }
         });
 
@@ -111,13 +168,16 @@ public class FrmRuta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnModificar)
                         .addGap(28, 28, 28)
-                        .addComponent(btnEliminar)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBuscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar))
+                            .addComponent(btnRegresar))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +202,9 @@ public class FrmRuta extends javax.swing.JFrame {
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNuevo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnRegresar))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
 
@@ -162,6 +224,91 @@ public class FrmRuta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnNuevoActionPerformed
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        
+        String origen = txtOrigen.getText();
+        String destino = txtDestino.getText();
+        String numeroRuta = txtRuta.getText();
+        
+        listaRuta = controladorRuta.registrarRuta(listaRuta, origen, destino, numeroRuta);
+        String res = controladorRuta.guardarArchivo(listaRuta);
+        listar();
+        limpiar();
+        
+    
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        String numeroRuta = JOptionPane.showInputDialog("Ingrese el numero de la ruta que desea buscar");
+        txtRuta.setEnabled(false);
+        btnModificar.setEnabled(true);
+        ClsRuta ruta = null;
+        
+        ruta = controladorRuta.buscarRuta(listaRuta, numeroRuta);
+        if(ruta == null){
+           limpiar();   
+        }else{
+            txtOrigen.setText(ruta.getOrigen());
+            txtDestino.setText(ruta.getDestino());
+            txtRuta.setText(ruta.getNumeroRuta());
+        }      
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+        String origen = txtOrigen.getText();
+        String destino = txtDestino.getText();
+        String numeroRuta = txtRuta.getText();
+        
+        listaRuta = controladorRuta.modificarRuta(listaRuta, origen, destino, numeroRuta);
+         String res = controladorRuta.guardarArchivo(listaRuta);
+        listar();
+        limpiar();
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+         String numeroRuta = JOptionPane.showInputDialog("Ingrese el numero de la ruta que desea buscar");
+         listaRuta = controladorRuta.EliminarRuta(listaRuta, numeroRuta);
+          String res = controladorRuta.guardarArchivo(listaRuta);
+         listar();
+         
+     
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtOrigenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOrigenKeyTyped
+              char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtOrigenKeyTyped
+
+    private void txtDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDestinoKeyTyped
+            char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDestinoKeyTyped
+
+    private void txtRutaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutaKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtRutaKeyTyped
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+       FrmAdministrador administrador= new FrmAdministrador();
+       administrador.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     public void limpiar(){
         
         txtDestino.setText("");
@@ -170,6 +317,12 @@ public class FrmRuta extends javax.swing.JFrame {
     
     
 }
+    
+    public void listar(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = controladorRuta.listarElementos(listaRuta);
+        jTableRuta.setModel(modelo);
+    }
     
     
     /**
@@ -213,8 +366,9 @@ public class FrmRuta extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableRuta;
     private javax.swing.JLabel lblDestino;
     private javax.swing.JLabel lblNumeroRuta;
     private javax.swing.JLabel lblOrigen;

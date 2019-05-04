@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Javier Parra
  */
-public class ClsRuta {
+public class ClsRuta  implements Serializable{
     
     String origen, destino, numeroRuta;
 
