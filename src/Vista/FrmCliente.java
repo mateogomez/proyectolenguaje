@@ -234,7 +234,7 @@ public class FrmCliente extends javax.swing.JFrame {
                                         .addComponent(BtnNuevo)
                                         .addGap(25, 25, 25)
                                         .addComponent(BtnRegistrar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                                         .addComponent(BtnBuscar)))
                                 .addGap(3, 3, 3)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

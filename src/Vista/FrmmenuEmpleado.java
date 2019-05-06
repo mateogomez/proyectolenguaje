@@ -27,7 +27,7 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmbMenu = new javax.swing.JMenu();
         JmtpagarReservas = new javax.swing.JMenuItem();
@@ -35,10 +35,10 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnRegresar.setText("Regresar");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnRegresarActionPerformed(evt);
             }
         });
 
@@ -60,23 +60,25 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(310, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BtnRegresar)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(243, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BtnRegresar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+      FrmLogin login = new FrmLogin();
+      login.setVisible(true);
+      dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,10 +116,10 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JMenu JmbMenu;
     private javax.swing.JMenuItem JmtpagarReservas;
     private javax.swing.JMenuItem Jmtreservas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

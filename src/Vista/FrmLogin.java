@@ -232,7 +232,20 @@ public class FrmLogin extends javax.swing.JFrame {
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
 
         if (JrbtnEmpleado.isSelected()) {
-
+         String cedula= txtCedula.getText();
+         String password=JpasswordContrasena.getText();
+         String empleado =JrbtnEmpleado.getText();
+         String respuesta =controladorLogin.Login(listaEmpleado, listaCliente, administrado, empleado, cedula, password);
+       if (respuesta.equals("Si")) {
+                FrmmenuEmpleado menuempleado = new FrmmenuEmpleado();
+                menuempleado.setVisible(true);
+                dispose();
+            } else {
+                if (respuesta.equals("No")) {
+                    JOptionPane.showMessageDialog(null, "cedula o password incorrecto");
+                    limpiar();
+                }
+            }
         }
         if (JrbtnCliente.isSelected()) {
 

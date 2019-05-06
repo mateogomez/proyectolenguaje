@@ -156,18 +156,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JmtAerolineaActionPerformed
 
-    private void JmtEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtEmpleadoActionPerformed
-        FrmEmpleado empleado = new FrmEmpleado();
-        empleado.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_JmtEmpleadoActionPerformed
-
-    private void JmtPromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtPromocionActionPerformed
-        FrmPromocion promocion = new FrmPromocion();
-        promocion.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_JmtPromocionActionPerformed
-
     private void JmtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtInventarioActionPerformed
         FrmInventario inventario = new FrmInventario();
         inventario.setVisible(true);
@@ -175,22 +163,34 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JmtInventarioActionPerformed
 
     private void JmtAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtAvionesActionPerformed
-    FrmAvion avion=new FrmAvion();
-    avion.setVisible(true);
-    dispose();
+        FrmAvion avion=new FrmAvion();
+        avion.setVisible(true);
+        dispose();
     }//GEN-LAST:event_JmtAvionesActionPerformed
 
     private void JmtRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtRutasActionPerformed
-    FrmRuta ruta=new FrmRuta();
-    ruta.setVisible(true);
-    dispose();
+        FrmRuta ruta=new FrmRuta();
+        ruta.setVisible(true);
+        dispose();
     }//GEN-LAST:event_JmtRutasActionPerformed
 
+    private void JmtPromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtPromocionActionPerformed
+        FrmPromocion promocion = new FrmPromocion();
+        promocion.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtPromocionActionPerformed
+
     private void JmtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtClienteActionPerformed
-     FrmCliente cliente =new FrmCliente();
-     cliente.setVisible(true);
-     dispose();
+        FrmCliente cliente =new FrmCliente();
+        cliente.setVisible(true);
+        dispose();
     }//GEN-LAST:event_JmtClienteActionPerformed
+
+    private void JmtEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtEmpleadoActionPerformed
+        FrmEmpleado empleado = new FrmEmpleado();
+        empleado.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments

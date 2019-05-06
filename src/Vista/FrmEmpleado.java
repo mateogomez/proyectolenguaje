@@ -137,13 +137,13 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
         JtEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cargo", "Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono"
+                "Cargo", "Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono", "Password"
             }
         ));
         jScrollPane1.setViewportView(JtEmpleado);
@@ -233,7 +233,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
                                         .addComponent(BtnNuevo)
                                         .addGap(25, 25, 25)
                                         .addComponent(BtnRegistrar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                                         .addComponent(BtnBuscar)))
                                 .addGap(3, 3, 3)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

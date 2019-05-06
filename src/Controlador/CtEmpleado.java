@@ -111,11 +111,11 @@ public class CtEmpleado {
 
     public DefaultTableModel listarElementos(ArrayList<ClsEmpleado> listaEmpleado) {
         DefaultTableModel modelo;
-        String nombreColumnas[] = {"Cargo", "Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono"};
+        String nombreColumnas[] = {"Cargo", "Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono","Password"};
         modelo = new DefaultTableModel(new Object[][]{}, nombreColumnas);
         try {
             for (int i = 0; i < listaEmpleado.size(); i++) {
-                modelo.addRow(new Object[]{listaEmpleado.get(i).getCargo(), listaEmpleado.get(i).getCedula(), listaEmpleado.get(i).getNombre(), listaEmpleado.get(i).getApellido(), listaEmpleado.get(i).getGenero(), listaEmpleado.get(i).getCorreo(), listaEmpleado.get(i).getTelefono()});
+                modelo.addRow(new Object[]{listaEmpleado.get(i).getCargo(), listaEmpleado.get(i).getCedula(), listaEmpleado.get(i).getNombre(), listaEmpleado.get(i).getApellido(), listaEmpleado.get(i).getGenero(), listaEmpleado.get(i).getCorreo(), listaEmpleado.get(i).getTelefono(),listaEmpleado.get(i).getPassword()});
             }
         } catch (Exception e) {
             System.out.println(e.toString());

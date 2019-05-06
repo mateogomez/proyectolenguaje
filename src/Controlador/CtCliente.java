@@ -114,11 +114,11 @@ public class CtCliente {
 
     public DefaultTableModel listarElementos(ArrayList<ClsCliente> listaCliente) {
         DefaultTableModel modelo;
-        String nombreColumnas[] = {"Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono", "Millas recorridas"};
+        String nombreColumnas[] = {"Cedula", "Nombre", "Apellido", "Genero", "Correo", "Telefono", "Millas recorridas","Password"};
         modelo = new DefaultTableModel(new Object[][]{}, nombreColumnas);
         try {
             for (int i = 0; i < listaCliente.size(); i++) {
-                modelo.addRow(new Object[]{listaCliente.get(i).getCedula(), listaCliente.get(i).getNombre(), listaCliente.get(i).getApellido(), listaCliente.get(i).getGenero(), listaCliente.get(i).getCorreo(), listaCliente.get(i).getTelefono(), listaCliente.get(i).getMillasRecorridas()});
+                modelo.addRow(new Object[]{listaCliente.get(i).getCedula(), listaCliente.get(i).getNombre(), listaCliente.get(i).getApellido(), listaCliente.get(i).getGenero(), listaCliente.get(i).getCorreo(), listaCliente.get(i).getTelefono(), listaCliente.get(i).getMillasRecorridas(),listaCliente.get(i).getPassword()});
             }
         } catch (Exception e) {
             System.out.println(e.toString());
