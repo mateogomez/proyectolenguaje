@@ -273,8 +273,8 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnIngresarActionPerformed
 
     private void JmtGestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtGestionarClienteActionPerformed
-        FrmregistroCliente registro = new FrmregistroCliente();
-        registro.setVisible(true);
+        FrmregistrarCliente registrocliente = new FrmregistrarCliente();
+        registrocliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_JmtGestionarClienteActionPerformed
     public void limpiar() {
