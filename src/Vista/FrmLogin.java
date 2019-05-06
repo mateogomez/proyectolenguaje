@@ -70,7 +70,9 @@ public class FrmLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblBienvenido.setBackground(new java.awt.Color(51, 51, 51));
         lblBienvenido.setText("BIENVENIDO");
+        lblBienvenido.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
 
         BtgrpSeleccion.add(JrbtnEmpleado);
         JrbtnEmpleado.setText("Empleado");
@@ -158,19 +160,17 @@ public class FrmLogin extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblBienvenido)
                                 .addComponent(JrbtnEmpleado)))
-                        .addGap(0, 125, Short.MAX_VALUE))
+                        .addContainerGap(193, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPassword)
-                                .addGap(27, 27, 27)
-                                .addComponent(JpasswordContrasena))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCedula)
-                                .addGap(44, 44, 44)
-                                .addComponent(txtCedula)))))
-                .addContainerGap())
+                            .addComponent(lblCedula)
+                            .addComponent(lblPassword))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCedula)
+                            .addComponent(JpasswordContrasena))
+                        .addGap(82, 82, 82))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
                 .addComponent(BtnIngresar)
@@ -180,7 +180,7 @@ public class FrmLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(JrbtnEmpleado)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
