@@ -132,7 +132,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
         jLabel1.setText("Cargo");
 
-        CbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piloto", "Azafata", "Vendedor", " " }));
+        CbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piloto", "Azafata", "Vendedor" }));
         CbxCargo.setEnabled(false);
 
         JtEmpleado.setModel(new javax.swing.table.DefaultTableModel(

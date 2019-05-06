@@ -55,11 +55,16 @@ public class FrmmenuCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblPasajeros = new javax.swing.JLabel();
         JcbxDestino = new javax.swing.JComboBox<>();
+        txtPasajeros = new javax.swing.JTextField();
+        btnSumar = new javax.swing.JButton();
+        BtnRestar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        JmDestinos = new javax.swing.JMenu();
+        JmtRutas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jRadioButton1.setText("jRadioButton1");
@@ -134,7 +139,7 @@ public class FrmmenuCliente extends javax.swing.JFrame {
                             .addComponent(lblFecharegreso))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JdateFechaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -150,6 +155,22 @@ public class FrmmenuCliente extends javax.swing.JFrame {
             }
         });
 
+        txtPasajeros.setText("0");
+
+        btnSumar.setText("+");
+        btnSumar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSumarActionPerformed(evt);
+            }
+        });
+
+        BtnRestar.setText("-");
+        BtnRestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRestarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -159,7 +180,13 @@ public class FrmmenuCliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(JcbxDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPasajeros))
+                    .addComponent(lblPasajeros)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtPasajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSumar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnRestar)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -170,6 +197,12 @@ public class FrmmenuCliente extends javax.swing.JFrame {
                 .addComponent(JcbxDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPasajeros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSumar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnRestar))
+                    .addComponent(txtPasajeros))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -206,20 +239,33 @@ public class FrmmenuCliente extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        BtnRegresar.setText("Regresar");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane2.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(BtnRegresar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addComponent(BtnRegresar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnRegresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Mi reserva");
@@ -228,8 +274,22 @@ public class FrmmenuCliente extends javax.swing.JFrame {
         jMenu2.setText("Promociones");
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Destinos");
-        jMenuBar1.add(jMenu3);
+        JmDestinos.setText("Destinos");
+        JmDestinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmDestinosActionPerformed(evt);
+            }
+        });
+
+        JmtRutas.setText("Rutas");
+        JmtRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtRutasActionPerformed(evt);
+            }
+        });
+        JmDestinos.add(JmtRutas);
+
+        jMenuBar1.add(JmDestinos);
 
         jMenu4.setText("Atencion al cliente");
         jMenuBar1.add(jMenu4);
@@ -242,7 +302,7 @@ public class FrmmenuCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,6 +331,39 @@ public class FrmmenuCliente extends javax.swing.JFrame {
     private void JcbxDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcbxDestinoActionPerformed
         listarcomboxdestino();
     }//GEN-LAST:event_JcbxDestinoActionPerformed
+
+    private void BtnRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRestarActionPerformed
+        int entrada = Integer.parseInt(txtPasajeros.getText());
+        int resta = entrada - 1;
+        if (resta >= 0) {
+            String numero = resta + "";
+            txtPasajeros.setText(numero);
+        }
+
+    }//GEN-LAST:event_BtnRestarActionPerformed
+
+    private void btnSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumarActionPerformed
+        int entrada = Integer.parseInt(txtPasajeros.getText());
+        int suma = entrada + 1;
+        String numero = suma + "";
+        txtPasajeros.setText(numero);
+    }//GEN-LAST:event_btnSumarActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void JmDestinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmDestinosActionPerformed
+
+    }//GEN-LAST:event_JmDestinosActionPerformed
+
+    private void JmtRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtRutasActionPerformed
+        FrmDestinos destinos = new FrmDestinos();
+        destinos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtRutasActionPerformed
     private void listarcomboxorigen() {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < listarutas.size(); i++) {
@@ -285,7 +378,7 @@ public class FrmmenuCliente extends javax.swing.JFrame {
         for (int i = 0; i < listarutas.size(); i++) {
             modelo.addElement(listarutas.get(i).getDestino());
         }
-        JcbxIda.setModel(modelo);
+        JcbxDestino.setModel(modelo);
 
     }
 
@@ -325,17 +418,21 @@ public class FrmmenuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton BtnRestar;
     private javax.swing.JComboBox<String> JcbxDestino;
     private javax.swing.JComboBox<String> JcbxIda;
     private com.toedter.calendar.JDateChooser JdateFechaida;
     private com.toedter.calendar.JDateChooser JdateFecharegreso;
+    private javax.swing.JMenu JmDestinos;
+    private javax.swing.JMenuItem JmtRutas;
     private javax.swing.JRadioButton JrdbtnSoloida;
+    private javax.swing.JButton btnSumar;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -346,5 +443,6 @@ public class FrmmenuCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblFecharegreso;
     private javax.swing.JLabel lblIda;
     private javax.swing.JLabel lblPasajeros;
+    private javax.swing.JTextField txtPasajeros;
     // End of variables declaration//GEN-END:variables
 }

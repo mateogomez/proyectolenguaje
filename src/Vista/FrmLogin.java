@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.CtCliente;
 import Controlador.CtEmpleado;
 import Controlador.CtLogin;
 import Modelo.ClsAdministrador;
@@ -20,18 +21,23 @@ import javax.swing.JOptionPane;
 public class FrmLogin extends javax.swing.JFrame {
 
     ClsAdministrador administrado;
-    ArrayList<ClsEmpleado> listaEmpleado = new ArrayList<ClsEmpleado>();
-    ArrayList<ClsCliente> listaCliente = new ArrayList<ClsCliente>();
+    ArrayList<ClsEmpleado> listaEmpleado;
+    ArrayList<ClsCliente> listaCliente;
     CtEmpleado controladorEmpleado;
+    CtCliente controladorCliente;
     CtLogin controladorLogin;
 
     public FrmLogin() {
         initComponents();
         controladorEmpleado = new CtEmpleado();
         controladorLogin = new CtLogin();
+        controladorCliente=new CtCliente();
         administrado = new ClsAdministrador();
+        listaCliente=new ArrayList<ClsCliente>();
+        listaEmpleado=new ArrayList<ClsEmpleado>();
         try {
             listaEmpleado = controladorEmpleado.cargarArchivo(listaEmpleado);
+            listaCliente=controladorCliente.cargarArchivo(listaCliente);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -49,7 +55,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         BtgrpSeleccion = new javax.swing.ButtonGroup();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        lblBienvenido = new javax.swing.JLabel();
         JrbtnEmpleado = new javax.swing.JRadioButton();
         JrbtnCliente = new javax.swing.JRadioButton();
         lblCedula = new javax.swing.JLabel();
@@ -59,6 +64,7 @@ public class FrmLogin extends javax.swing.JFrame {
         BtnIngresar = new javax.swing.JButton();
         lblPregunta = new javax.swing.JLabel();
         JrbtnAdministrador = new javax.swing.JRadioButton();
+        lblBienvenido = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmGestionar = new javax.swing.JMenu();
         JmtGestionarCliente = new javax.swing.JMenuItem();
@@ -69,10 +75,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblBienvenido.setBackground(new java.awt.Color(51, 51, 51));
-        lblBienvenido.setText("BIENVENIDO");
-        lblBienvenido.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
 
         BtgrpSeleccion.add(JrbtnEmpleado);
         JrbtnEmpleado.setText("Empleado");
@@ -116,6 +118,8 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
+        lblBienvenido.setText("BIENVENIDO");
+
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
 
         JmGestionar.setText("Registro");
@@ -155,11 +159,9 @@ public class FrmLogin extends javax.swing.JFrame {
                         .addComponent(lblPregunta)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JrbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JrbtnAdministrador)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblBienvenido)
-                                .addComponent(JrbtnEmpleado)))
+                            .addComponent(JrbtnEmpleado)
+                            .addComponent(JrbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(193, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -172,15 +174,21 @@ public class FrmLogin extends javax.swing.JFrame {
                             .addComponent(JpasswordContrasena))
                         .addGap(82, 82, 82))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(BtnIngresar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(BtnIngresar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(lblBienvenido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(JrbtnEmpleado)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,12 +241,12 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void BtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIngresarActionPerformed
 
-        if (JrbtnEmpleado.isSelected()) {
-         String cedula= txtCedula.getText();
-         String password=JpasswordContrasena.getText();
-         String empleado =JrbtnEmpleado.getText();
-         String respuesta =controladorLogin.Login(listaEmpleado, listaCliente, administrado, empleado, cedula, password);
-       if (respuesta.equals("Si")) {
+        if (JrbtnEmpleado.isSelected() == true) {
+            String cedula = txtCedula.getText();
+            String password = JpasswordContrasena.getText();
+            String empleado = JrbtnEmpleado.getText();
+            String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, empleado, cedula, password);
+            if (respuesta.equals("Si")) {
                 FrmmenuEmpleado menuempleado = new FrmmenuEmpleado();
                 menuempleado.setVisible(true);
                 dispose();
@@ -249,14 +257,27 @@ public class FrmLogin extends javax.swing.JFrame {
                 }
             }
         }
-        if (JrbtnCliente.isSelected()) {
+        if (JrbtnCliente.isSelected() == true) {
+            String cedula = txtCedula.getText();
+            String password = JpasswordContrasena.getText();
+            String cliente = JrbtnCliente.getText();
+            String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, cliente, cedula, password);
+            if (respuesta.equals("Si")) {
+                FrmmenuCliente menucliente = new FrmmenuCliente();
+                menucliente.setVisible(true);
+                dispose();
+            } else {
+                if (respuesta.equals("No")) {
+                    JOptionPane.showMessageDialog(null, "cedula o password incorrecto");
+                    limpiar();
+                }
+            }
 
         }
-        if (JrbtnAdministrador.isSelected()) {
+        if (JrbtnAdministrador.isSelected() == true) {
             String cedula = txtCedula.getText();
             String password = JpasswordContrasena.getText();
             String administrador = JrbtnAdministrador.getText();
-
             String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, administrador, cedula, password);
             if (respuesta.equals("Si")) {
                 FrmAdministrador administradores = new FrmAdministrador();
