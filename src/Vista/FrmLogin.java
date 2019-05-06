@@ -241,7 +241,7 @@ public class FrmLogin extends javax.swing.JFrame {
             String cedula = txtCedula.getText();
             String password = JpasswordContrasena.getText();
             String administrador = JrbtnAdministrador.getText();
-          
+
             String respuesta = controladorLogin.Login(listaEmpleado, listaCliente, administrado, administrador, cedula, password);
             if (respuesta.equals("Si")) {
                 FrmAdministrador administradores = new FrmAdministrador();
@@ -258,7 +258,9 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnIngresarActionPerformed
 
     private void JmtGestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtGestionarClienteActionPerformed
-       
+        FrmregistroCliente registro = new FrmregistroCliente();
+        registro.setVisible(true);
+        dispose();
     }//GEN-LAST:event_JmtGestionarClienteActionPerformed
     public void limpiar() {
         txtCedula.setText("");
