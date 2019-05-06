@@ -43,10 +43,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
         JmtEmpleado = new javax.swing.JMenuItem();
         JmtCliente = new javax.swing.JMenuItem();
         JmtPromocion = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        JmtRutas = new javax.swing.JMenuItem();
         JmtAviones = new javax.swing.JMenuItem();
         JmtInventario = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -76,6 +75,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         JmtAerolinea.add(JmtEmpleado);
 
         JmtCliente.setText("Clientes");
+        JmtCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtClienteActionPerformed(evt);
+            }
+        });
         JmtAerolinea.add(JmtCliente);
 
         JmtPromocion.setText("Promociones");
@@ -86,8 +90,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         });
         JmtAerolinea.add(JmtPromocion);
 
-        jMenuItem3.setText("Rutas");
-        JmtAerolinea.add(jMenuItem3);
+        JmtRutas.setText("Rutas");
+        JmtRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtRutasActionPerformed(evt);
+            }
+        });
+        JmtAerolinea.add(JmtRutas);
 
         JmtAviones.setText("Aviones");
         JmtAviones.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +113,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
             }
         });
         JmtAerolinea.add(JmtInventario);
-
-        jMenuItem6.setText("Informacion aerolinea");
-        JmtAerolinea.add(jMenuItem6);
 
         jMenuBar1.add(JmtAerolinea);
 
@@ -174,6 +180,18 @@ public class FrmAdministrador extends javax.swing.JFrame {
     dispose();
     }//GEN-LAST:event_JmtAvionesActionPerformed
 
+    private void JmtRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtRutasActionPerformed
+    FrmRuta ruta=new FrmRuta();
+    ruta.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_JmtRutasActionPerformed
+
+    private void JmtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtClienteActionPerformed
+     FrmCliente cliente =new FrmCliente();
+     cliente.setVisible(true);
+     dispose();
+    }//GEN-LAST:event_JmtClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,11 +235,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmtEmpleado;
     private javax.swing.JMenuItem JmtInventario;
     private javax.swing.JMenuItem JmtPromocion;
+    private javax.swing.JMenuItem JmtRutas;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
