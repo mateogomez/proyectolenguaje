@@ -114,6 +114,8 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+
         JmGestionar.setText("Registro");
 
         JmtGestionarCliente.setText("Cliente");
