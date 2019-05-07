@@ -54,6 +54,9 @@ public class FrmDestinos extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(JtDestinos);
+        if (JtDestinos.getColumnModel().getColumnCount() > 0) {
+            JtDestinos.getColumnModel().getColumn(1).setHeaderValue("Destino");
+        }
 
         BtnRegresar.setText("Regresar");
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {

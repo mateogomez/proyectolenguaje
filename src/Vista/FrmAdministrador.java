@@ -48,7 +48,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
         JmtInventario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        JmVuelo = new javax.swing.JMenu();
+        JmtVuelo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,8 +124,22 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu5.setText("Vuelos");
-        jMenuBar1.add(jMenu5);
+        JmVuelo.setText("Vuelos");
+        JmVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmVueloActionPerformed(evt);
+            }
+        });
+
+        JmtVuelo.setText("Abrir");
+        JmtVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmtVueloActionPerformed(evt);
+            }
+        });
+        JmVuelo.add(JmtVuelo);
+
+        jMenuBar1.add(JmVuelo);
 
         setJMenuBar(jMenuBar1);
 
@@ -192,6 +207,16 @@ public class FrmAdministrador extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_JmtEmpleadoActionPerformed
 
+    private void JmVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmVueloActionPerformed
+       
+    }//GEN-LAST:event_JmVueloActionPerformed
+
+    private void JmtVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmtVueloActionPerformed
+     FrmVuelos vuelo=new FrmVuelos();
+     vuelo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_JmtVueloActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +254,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JMenu JmVuelo;
     private javax.swing.JMenu JmtAerolinea;
     private javax.swing.JMenuItem JmtAviones;
     private javax.swing.JMenuItem JmtCliente;
@@ -236,8 +262,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmtInventario;
     private javax.swing.JMenuItem JmtPromocion;
     private javax.swing.JMenuItem JmtRutas;
+    private javax.swing.JMenuItem JmtVuelo;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables

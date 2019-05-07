@@ -30,6 +30,7 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
         BtnRegresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmbMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         JmtpagarReservas = new javax.swing.JMenuItem();
         Jmtreservas = new javax.swing.JMenuItem();
 
@@ -43,6 +44,9 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
         });
 
         JmbMenu.setText("Menu");
+
+        jMenuItem1.setText("Consultar clientes");
+        JmbMenu.add(jMenuItem1);
 
         JmtpagarReservas.setText("Pagar reservas");
         JmbMenu.add(JmtpagarReservas);
@@ -121,5 +125,6 @@ public class FrmmenuEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmtpagarReservas;
     private javax.swing.JMenuItem Jmtreservas;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
