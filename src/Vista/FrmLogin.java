@@ -55,6 +55,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         BtgrpSeleccion = new javax.swing.ButtonGroup();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jLabel1 = new javax.swing.JLabel();
         JrbtnEmpleado = new javax.swing.JRadioButton();
         JrbtnCliente = new javax.swing.JRadioButton();
         lblCedula = new javax.swing.JLabel();
@@ -65,6 +66,8 @@ public class FrmLogin extends javax.swing.JFrame {
         lblPregunta = new javax.swing.JLabel();
         JrbtnAdministrador = new javax.swing.JRadioButton();
         lblBienvenido = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmGestionar = new javax.swing.JMenu();
         JmtGestionarCliente = new javax.swing.JMenuItem();
@@ -74,7 +77,10 @@ public class FrmLogin extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\background-1205309_960_720.jpg")); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtgrpSeleccion.add(JrbtnEmpleado);
         JrbtnEmpleado.setText("Empleado");
@@ -83,6 +89,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 JrbtnEmpleadoActionPerformed(evt);
             }
         });
+        getContentPane().add(JrbtnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 70, -1, -1));
 
         BtgrpSeleccion.add(JrbtnCliente);
         JrbtnCliente.setText("Cliente");
@@ -91,24 +98,41 @@ public class FrmLogin extends javax.swing.JFrame {
                 JrbtnClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(JrbtnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 100, 78, -1));
 
         lblCedula.setText("Cedula");
+        getContentPane().add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 170, -1, -1));
 
         lblPassword.setText("Password");
+        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 207, -1, -1));
 
         txtCedula.setEnabled(false);
+        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 168, 229, -1));
 
         JpasswordContrasena.setEnabled(false);
+        getContentPane().add(JpasswordContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 205, 229, -1));
 
+        BtnIngresar.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\iconfinder_Login_73221 (3).png")); // NOI18N
         BtnIngresar.setText("Ingresar");
+        BtnIngresar.setBorder(null);
+        BtnIngresar.setBorderPainted(false);
+        BtnIngresar.setContentAreaFilled(false);
+        BtnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnIngresar.setEnabled(false);
+        BtnIngresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnIngresar.setIconTextGap(-3);
+        BtnIngresar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        BtnIngresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BtnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnIngresarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 140, -1));
 
+        lblPregunta.setBackground(new java.awt.Color(255, 255, 255));
         lblPregunta.setText("Desea ingresar a :");
+        getContentPane().add(lblPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 104, -1, -1));
 
         BtgrpSeleccion.add(JrbtnAdministrador);
         JrbtnAdministrador.setText("Administrador");
@@ -117,8 +141,29 @@ public class FrmLogin extends javax.swing.JFrame {
                 JrbtnAdministradorActionPerformed(evt);
             }
         });
+        getContentPane().add(JrbtnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 127, -1, -1));
 
         lblBienvenido.setText("BIENVENIDO");
+        getContentPane().add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 12, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\iconfinder_Gnome-Application-Exit-64_55530.png")); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 100, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\depositphotos_188557138-stock-video-liquid-texture-form-lines-isolated.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -15, 440, 370));
 
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -147,67 +192,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jMenuBar1.add(JmOpciones);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPregunta)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JrbtnAdministrador)
-                            .addComponent(JrbtnEmpleado)
-                            .addComponent(JrbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(193, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCedula)
-                            .addComponent(lblPassword))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCedula)
-                            .addComponent(JpasswordContrasena))
-                        .addGap(82, 82, 82))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(BtnIngresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(lblBienvenido)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblBienvenido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(JrbtnEmpleado)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPregunta)
-                    .addComponent(JrbtnCliente))
-                .addGap(4, 4, 4)
-                .addComponent(JrbtnAdministrador)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCedula)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(JpasswordContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(BtnIngresar)
-                .addGap(42, 42, 42))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -298,6 +282,12 @@ public class FrmLogin extends javax.swing.JFrame {
         registrocliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_JmtGestionarClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+        System.exit(WIDTH);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiar() {
         txtCedula.setText("");
         JpasswordContrasena.setText("");
@@ -349,7 +339,10 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JRadioButton JrbtnCliente;
     private javax.swing.JRadioButton JrbtnEmpleado;
     private javax.swing.JMenuItem JtmSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblBienvenido;
