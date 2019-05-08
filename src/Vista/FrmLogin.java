@@ -77,8 +77,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\background-1205309_960_720.jpg")); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

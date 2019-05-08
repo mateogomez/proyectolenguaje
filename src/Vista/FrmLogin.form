@@ -13,11 +13,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ProyectosJava\proyectolenguaje\src\Images\background-1205309_960_720.jpg"/>
-        </Property>
-      </Properties>
     </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <Properties>

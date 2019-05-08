@@ -37,7 +37,16 @@ public class FrmAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGestionarEmpleados = new javax.swing.JButton();
+        btnGestionarClientes = new javax.swing.JButton();
+        btnGestionarPromociones = new javax.swing.JButton();
+        btnGestionarRutas = new javax.swing.JButton();
+        btnGestionarAviones = new javax.swing.JButton();
+        btnGestionarInventario = new javax.swing.JButton();
+        btnVuelos = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmtAerolinea = new javax.swing.JMenu();
         JmtEmpleado = new javax.swing.JMenuItem();
@@ -52,13 +61,93 @@ public class FrmAdministrador extends javax.swing.JFrame {
         JmtVuelo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnGestionarEmpleados.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\iconfinder_cog_3688500.png")); // NOI18N
+        btnGestionarEmpleados.setText("Gestionar Empleados");
+        btnGestionarEmpleados.setAlignmentY(0.1F);
+        btnGestionarEmpleados.setBorder(null);
+        btnGestionarEmpleados.setContentAreaFilled(false);
+        btnGestionarEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGestionarEmpleados.setIconTextGap(8);
+        btnGestionarEmpleados.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnGestionarEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGestionarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarEmpleadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 170, 30));
+
+        btnGestionarClientes.setText("Gestionar Clientes");
+        btnGestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarClientesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, -1));
+
+        btnGestionarPromociones.setText("Gestionar Promociones");
+        btnGestionarPromociones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarPromocionesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarPromociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 150, -1));
+
+        btnGestionarRutas.setText("Gestionar Rutas");
+        btnGestionarRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarRutasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 130, -1));
+
+        btnGestionarAviones.setText("Gestionar Aviones");
+        btnGestionarAviones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarAvionesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarAviones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 130, -1));
+
+        btnGestionarInventario.setText("Gestionar Inventario");
+        btnGestionarInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarInventarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGestionarInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+
+        btnVuelos.setText("Vuelos");
+        btnVuelos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVuelosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+
+        BtnRegresar.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\iconfinder_ic_keyboard_return_48px_352473.png")); // NOI18N
         BtnRegresar.setText("Regresar");
+        BtnRegresar.setBorder(null);
+        BtnRegresar.setBorderPainted(false);
+        BtnRegresar.setContentAreaFilled(false);
+        BtnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnRegresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnRegresar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        BtnRegresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 290, 140, 100));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\descarga.png")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\ProyectosJava\\proyectolenguaje\\src\\Images\\vector-abstracto-fondo-blanco-efecto-bokeh_12327-54.jpg")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 630, 440));
 
         JmtAerolinea.setText("Aerolinea");
         JmtAerolinea.addActionListener(new java.awt.event.ActionListener() {
@@ -143,21 +232,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BtnRegresar)
-                .addGap(0, 321, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 254, Short.MAX_VALUE)
-                .addComponent(BtnRegresar))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,6 +291,49 @@ public class FrmAdministrador extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_JmtVueloActionPerformed
 
+    private void btnGestionarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosActionPerformed
+         FrmEmpleado empleado = new FrmEmpleado();
+        empleado.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarEmpleadosActionPerformed
+
+    private void btnGestionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarClientesActionPerformed
+        FrmCliente cliente =new FrmCliente();
+        cliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarClientesActionPerformed
+
+    private void btnGestionarPromocionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPromocionesActionPerformed
+        
+        FrmPromocion promocion = new FrmPromocion();
+        promocion.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarPromocionesActionPerformed
+
+    private void btnGestionarRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarRutasActionPerformed
+        FrmRuta ruta=new FrmRuta();
+        ruta.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarRutasActionPerformed
+
+    private void btnGestionarAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarAvionesActionPerformed
+        FrmAvion avion=new FrmAvion();
+        avion.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarAvionesActionPerformed
+
+    private void btnGestionarInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarInventarioActionPerformed
+    FrmInventario inventario = new FrmInventario();
+        inventario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGestionarInventarioActionPerformed
+
+    private void btnVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVuelosActionPerformed
+       FrmVuelos vuelo=new FrmVuelos();
+     vuelo.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnVuelosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +380,15 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmtPromocion;
     private javax.swing.JMenuItem JmtRutas;
     private javax.swing.JMenuItem JmtVuelo;
+    private javax.swing.JButton btnGestionarAviones;
+    private javax.swing.JButton btnGestionarClientes;
+    private javax.swing.JButton btnGestionarEmpleados;
+    private javax.swing.JButton btnGestionarInventario;
+    private javax.swing.JButton btnGestionarPromociones;
+    private javax.swing.JButton btnGestionarRutas;
+    private javax.swing.JButton btnVuelos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
